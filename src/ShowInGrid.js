@@ -1,21 +1,45 @@
 import React, { Component } from 'react'
-import Book from './Book'
+import BookInfo from './BookInfo'
 import books from './BooksSelected'
 
 
-import state of assigned shelf?
-state = shelf with books with assigned shelf (books prop)
+
+	let booksOnShelf = books.filter((book) => ({book.shelf === shelf.name}));
+
+	state = { booksOnShelf }
+			      	booksOnShelf=this.state.booksOnShelf
+
+
+			  <div>
+			  	{props.shelves.map((shelf) => (		
+				  <DisplayShelf
+				    shelf={props.shelf}
+				  />
+				))}
+			  </div>
+
+
 
 
 class ShowInGrid extends Component {
-	render () {
+
+	state = { books }
+
+	const moveToShelf = (event) => {
+	    this.setState({ shelf: event.target.value })
+	}
+
+    render () {
 		return (
 		  <ol className="books-grid">
 		    <li>
-		      <BOOK>
+		      <BookInfo
+*	      		books={this.state.books}
+*				moveToShelf={this.moveToShelf}
+			  />
 		    </li>
 		    <li>
-		      <BOOK>
+		      <BookInfo />
 		    </li>
 		  </ol> 
 		)

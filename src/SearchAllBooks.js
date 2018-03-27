@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
-import Search from './ToggleSearch'
-import ShowInGrid from './ShowInGrid'
-import books from './BooksSelected'
+import FilterBooks from './FilterBooks'
 
 
 (need search function?)
@@ -15,14 +14,14 @@ class SearchAllBooks extends Component {
 		return (
 		  <div className="search-books">
 		    <div className="search-books-bar">
-		      <a className="close-search" onClick={SEARCH.CLOSE}>Close</a>
+		      <Link to="/" className="close-search">Close</Link>
 		      <div className="search-books-input-wrapper">
 		        {BOOKSAPI}
 		        <input type="text" placeholder="Search by title or author"/>
 		      </div>
 		    </div>
 		    <div className="search-books-results">
-		      <SHOWINGRID>
+		      <FilterBooks/>
 		    </div>
 		  </div>
 		)

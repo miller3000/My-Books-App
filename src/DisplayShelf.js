@@ -1,22 +1,19 @@
 import React, { Component } from 'react'
-import ShowInGrid from './ShowInGrid'
-import books from './BooksSelected'
+import FilterBooks from './FilterBooks'
 
-
-import shelf state
-
-
-class DisplayShelf extends Component {
-	render () {
-		return (
-			  <div className="bookshelf">
-			    <h2 className="bookshelf-title">{shelf-state}</h2>
-			    <div className="bookshelf-books">
-			      <SHOWINGRID>
-			    </div>
-			  </div>
-		)
-	}
+function DisplayShelf(props) {
+	return (
+		  <div className="bookshelf" className={props.shelf.name} key={props.shelf.key}>
+		    <h2 className="bookshelf-title">{props.shelf.name}</h2>
+		    <div className="bookshelf-books">
+		      <FilterBooks
+		      	shelf={props.shelf}
+		      />
+		    </div>
+		  </div>
+	)
 }
 
 export default DisplayShelf
+
+
