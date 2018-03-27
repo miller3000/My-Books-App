@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 
 class ChangeBookShelf extends Component {
-	const {book, moveToShelf} = this.props;
 
 	render () {
 		return (
 	      <div className="book-shelf-changer">
-	        <select value={book.shelf} onChange={moveToShelf(book)}>
+	        <select value={this.props.book.shelf} onChange={this.props.moveToShelf}>
 	          <option value="none" disabled>Move to...</option>
 	          <option value="currentlyReading">Currently Reading</option>
 	          <option value="wantToRead">Want to Read</option>

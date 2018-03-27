@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 import FilterBooks from './FilterBooks'
 
 function DisplayShelf(props) {
 
 	const booksOnShelf = function(book) {
-		return book.shelf === shelf.name
+		return book.shelf === props.shelf.name
 	}
 
 	return (
-		  <div className="bookshelf" className={props.shelf.name} key={props.shelf.key}>
+		  <div className="bookshelf" key={props.shelf.key}>
 		    <h2 className="bookshelf-title">{props.shelf.name}</h2>
 		    <div className="bookshelf-books">
 		      <FilterBooks

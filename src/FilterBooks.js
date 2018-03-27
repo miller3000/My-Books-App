@@ -1,26 +1,27 @@
 import React, { Component } from 'react'
 import BookInfo from './BookInfo'
-import books from './BooksSelected'
 
 
 class FilterBooks extends Component {
 
-	state = { books }
+	state = {
+		books: books,
+		booksDisplayed: this.state.books.filter(this.props.filterFunc)
+	}
 
-	let booksDisplayed = this.state.books.filter(filterFunc);
 
-	const moveToShelf = function(book) {
-		this.setState(state) => ({ book.shelf: event.target.value })
+	moveToShelf = function(book) {
+		this.setState({ shelf: event.target.value })
 	}
 
     render () {
 		return (
 		  <ol className="books-grid">
-       	  {props.booksDisplayed.map((book) => (	
-			<li className="book-info" className={book.title} key={book.title}>
+       	  {this.state.booksDisplayed.map((book) => (	
+			<li className="book-info" key={book.title}>
 			  <BookInfo
 			    book={this.state.book}
-			    moveToShelf={this.props.moveToShelf}
+			    moveToShelf={this.moveToShelf}
 		      />
 		    </li>
 		  ))}

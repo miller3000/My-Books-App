@@ -7,15 +7,17 @@ import FilterBooks from './FilterBooks'
 
 class SearchAllBooks extends Component {
 
-	state = { query: '' }
+	query = '';
 
-	const updateQuery = (query) => {
+	state = { query: '' };
+
+	updateQuery = (query) => {
 		this.setState({ query: query.trim() })
 	}
 
-	const matchInput = function(book) {
-		if (query) {
-			let match = new RegExp(escapeRegExp(query), 'i');
+	matchInput = function(book) {
+		if (this.state.query) {
+			let match = new RegExp(escapeRegExp(this.state.query), 'i');
 			return ((book) => match.test(book.title)) || ((book) => match.test(book.author));
 		}
 	}
@@ -29,7 +31,7 @@ class SearchAllBooks extends Component {
 		        {BOOKSAPI}
 		        <input
 		        	type="text"
-		        	value={query}
+		        	value={this.state.query}
 		        	placeholder="Search by title or author"
 		        	onChange={(event) => this.updateQuery(event.target.value)}
 		        />
@@ -37,7 +39,7 @@ class SearchAllBooks extends Component {
 		    </div>
 		    <div className="search-books-results">
 		      <FilterBooks
-		      	filterFunc={props.matchInput}
+		      	filterFunc={this.props.matchInput}
 		      />
 		    </div>
 		  </div>
