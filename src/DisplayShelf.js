@@ -12,6 +12,8 @@ function DisplayShelf(props) {
 		    <h2 className="bookshelf-title">{props.shelf.name}</h2>
 		    <div className="bookshelf-books">
 		      <FilterBooks
+		      	books={props.books}
+		        moveToShelf:{this.moveToShelf}
 		      	shelf={props.shelf}
 		      	filterFunc={props.booksOnShelf}
 		      />

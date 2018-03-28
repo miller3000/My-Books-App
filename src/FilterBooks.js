@@ -4,23 +4,15 @@ import BookInfo from './BookInfo'
 
 class FilterBooks extends Component {
 
-	state = {
-		books: books,
-		booksDisplayed: this.state.books.filter(this.props.filterFunc)
-	}
-
-
-	moveToShelf = function(book) {
-		this.setState({ shelf: event.target.value })
-	}
+	let booksDisplayed = this.props.books.filter(this.props.filterFunc);
 
     render () {
 		return (
 		  <ol className="books-grid">
-       	  {this.state.booksDisplayed.map((book) => (	
-			<li className="book-info" key={book.title}>
+       	  {this.props.booksDisplayed.map((book) => (	
+			<li className="book-info" key={book.id}>
 			  <BookInfo
-			    book={this.state.book}
+			    book={this.props.book}
 			    moveToShelf={this.moveToShelf}
 		      />
 		    </li>

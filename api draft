@@ -1,0 +1,67 @@
+getall()
+Returns a Promise which resolves to a JSON object containing a collection of book objects
+
+let books = *.getAll();
+
+- entries in array; books are objects; authors are arrays of strings; others are strings
+
+const updateBooks = *.update({book}, 'shelf')
+const searchBooks = *.search('query')
+
+
+update(book, shelf)
+book: `<Object>` containing at minimum an `id` attribute
+shelf: `<String>` contains one of ["wantToRead", "currentlyReading", "read"] 
+Returns a Promise which resolves to a JSON object containing the response data of the POST request
+
+search(query)
+query: `<String>`
+Returns a Promise which resolves to a JSON object containing a collection of a maximum of 20 book objects.
+These books do not know which shelf they are on. They are raw results only. You'll need to make sure that books have the correct state while on the search page.
+
+
+- note that all search terms start uppercase
+
+
+
+
+THIS RETURNS A PROMISE:
+
+const getAll = () =>
+  fetch('https://reactnd-books-api.udacity.com/books', { headers: {
+        'Authorization': 'Client-ID abc123'
+    }})
+    .then(res => res.json())
+    .then(data => data.books)
+
+
+  fetch('https://reactnd-books-api.udacity.com/books', { headers: {
+        'Authorization': 'Client-ID abc123'
+    }})
+    .then(res => res.json())
+    .then(data => console.log(data.books))
+
+
+
+
+fetch('https://reactnd-books-api.udacity.com/search', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Authorization': 'Client-ID abc123',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({'Austen'})
+  }).then(res => res.json())
+    .then(data => console.log(data.books))
+
+fetch('https://reactnd-books-api.udacity.com/search', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Authorization': 'Client-ID abc123',
+      'Content-Type': 'application/json'
+    },
+    body: 'Austen'
+  }).then(res => res.json())
+    .then(data => console.log(data.books))

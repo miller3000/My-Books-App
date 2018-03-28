@@ -6,6 +6,7 @@ const shelves = [
 	{ name: 'currentlyReading', key: 1 },
  	{ name: 'wantToRead', key: 2 },
  	{ name: 'alreadyRead', key: 3 }
+// 	{ name: 'none', key: 4}
 ];
 
 
@@ -19,6 +20,8 @@ function ListMyBooks(props) {
 			  <div>
 			  	{props.shelves.map((shelf) => (		
 				  <DisplayShelf
+				  	books={props.books}
+			        moveToShelf:{this.moveToShelf}
 				    shelf={props.shelf}
 				  />
 				))}
