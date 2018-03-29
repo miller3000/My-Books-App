@@ -10,7 +10,7 @@ import './App.css'
 class BooksApp extends Component {
 
   getBooks() {
-    *.getAll().then(books => this.setState({books}))  
+    BooksAPI.getAll().then(books => this.setState({books}))  
   }
 
   componentDidMount() {
@@ -18,7 +18,7 @@ class BooksApp extends Component {
   }
 
   moveToShelf(event) {
-    *.update(this.props.book, event.target.value).then(getBooks());
+    BooksAPI.update(this.props.book, event.target.value).then(getBooks());
   }
 
   render() {
