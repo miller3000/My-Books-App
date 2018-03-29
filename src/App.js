@@ -3,19 +3,23 @@ import { Route } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import ListMyBooks from './ListMyBooks'
 import SearchAllBooks from './SearchAllBooks'
+import SetBookShelf from './SetBookShelf'
 import './App.css'
+
 
 class BooksApp extends Component {
 
-  let books = *.getAll();
-
-  state = { books }
-
-  const moveToShelf = function(event) {
-    *.update(this.book, event.target.value);
-    updatedBooks = *.getAll();
-    this.setState({ books: updatedBooks });
+  getBooks() {
+    *.getAll().then(books => this.setState({books}))  
   }
+
+  componentDidMount() {
+    getBooks();
+  }
+
+  moveToShelf(event) {
+    *.update(this.props.book, event.target.value).then(getBooks());
+  },
 
   render() {
     return (
@@ -40,6 +44,7 @@ class BooksApp extends Component {
     </div>
     )
   }
+
 }
 
 export default BooksApp

@@ -1,17 +1,17 @@
-import React, { Component } from 'react'
-import ChangeBookShelf from './ChangeBookShelf'
-
-
-class BookInfo extends Component {
+import React from 'react'
+import SetBookShelf from './SetBookShelf'
 
 //	let book = {
 //		title: 'string',
-//		authors: ['string', 'string']
-//		shelf: 'string'
-//		imageLink: imageLinks[thumbail] 'string'
+//		authors: ['string', 'string'],
+//		shelf: 'string',
+//		imageLink: imageLinks[thumbnail] 'string'
 //		};
 
-	let book = this.props.book;
+
+function RenderBook(props) {
+
+	let book = props.book;
 	let author = book.authors.join(', ');
 	let imageLink = book.imageLinks.thumbnail;
 
@@ -20,9 +20,9 @@ class BookInfo extends Component {
 		  <div className="book">
 		    <div className="book-top">
 		      <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: `url(${imageLink})` }}></div>
-		      <ChangeBookShelf
+		      <SetBookShelf
 				book={book}
-				moveToShelf={this.moveToShelf}
+				moveToShelf={moveToShelf}
 		      />
 		    </div>
 		    <div className="book-title">{book.title}</div>
@@ -32,4 +32,4 @@ class BookInfo extends Component {
 	}
 }
 
-export default BookInfo
+export default RenderBook

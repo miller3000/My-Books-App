@@ -1,16 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import DisplayShelf from './DisplayShelf'
-
-const shelves = [
-	{ name: 'currentlyReading', key: 1 },
- 	{ name: 'wantToRead', key: 2 },
- 	{ name: 'alreadyRead', key: 3 }
-// 	{ name: 'none', key: 4}
-];
+import RenderShelf from './RenderShelf'
 
 
 function ListMyBooks(props) {
+
+	const shelves = [
+		{ name: 'currentlyReading', key: 'current' },
+	 	{ name: 'wantToRead', key: 'want' },
+	 	{ name: 'alreadyRead', key: 'read' }
+	// 	{ name: 'none', key: 'none'}
+	];
+
 	return (
 		<div className="list-books">
 			<div className="list-books-title">
@@ -19,9 +20,9 @@ function ListMyBooks(props) {
 			<div className="list-books-content">
 			  <div>
 			  	{props.shelves.map((shelf) => (		
-				  <DisplayShelf
+				  <RenderShelf
 				  	books={props.books}
-			        moveToShelf:{this.moveToShelf}
+			        moveToShelf:{moveToShelf}
 				    shelf={props.shelf}
 				  />
 				))}

@@ -1,25 +1,23 @@
-import React, { Component } from 'react'
-import BookInfo from './BookInfo'
+import React from 'react'
+import RenderBook from './RenderBook'
 
 
-class FilterBooks extends Component {
+function FilterBooks(props) {
 
-	let booksDisplayed = this.props.books.filter(this.props.filterFunc);
+	let booksDisplayed = props.books.filter(filterFunc);
 
-    render () {
-		return (
-		  <ol className="books-grid">
-       	  {this.props.booksDisplayed.map((book) => (	
-			<li className="book-info" key={book.id}>
-			  <BookInfo
-			    book={this.props.book}
-			    moveToShelf={this.moveToShelf}
-		      />
-		    </li>
-		  ))}
-       	  </ol>
-		)
-	}
+	return (
+	  <ol className="books-grid">
+   	  {props.booksDisplayed.map((book) => (	
+		<li className="book-info" key={props.books.id}>
+		  <RenderBook
+		    book={props.book}
+		    moveToShelf={moveToShelf}
+	      />
+	    </li>
+	  ))}
+   	  </ol>
+	)
 }
 
 export default FilterBooks

@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 
-class ChangeBookShelf extends Component {
-
-	let book = this.props.book;
+class SetBookShelf extends Component {
 
 	render () {
 		return (
@@ -19,4 +17,4 @@ class ChangeBookShelf extends Component {
 	}  
 }
 
-export default ChangeBookShelf
+export default SetBookShelf
