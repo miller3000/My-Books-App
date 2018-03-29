@@ -19,7 +19,7 @@ class BooksApp extends Component {
 
   moveToShelf(event) {
     *.update(this.props.book, event.target.value).then(getBooks());
-  },
+  }
 
   render() {
     return (

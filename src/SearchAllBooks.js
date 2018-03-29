@@ -1,24 +1,21 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import escapeRegExp from 'escape-string-regexp';
-import * as BooksAPI from './BooksAPI'
 import FilterBooks from './FilterBooks'
 
 
 class SearchAllBooks extends Component {
 
-	query = '';
-
 	state = { query: '' };
 
-	updateQuery = (query) => {
-		this.setState({ query: query.trim() })
+	updateQuery = (newQuery) => {
+		this.setState({ query: newQuery.trim() })
 	}
 
 	matchInput = function(book) {
-		if (this.state.query) {
+		if (this.state.query !== '') {
 			let match = new RegExp(escapeRegExp(this.state.query), 'i');
-			return ((book) => match.test(book.title)) || ((book) => match.test(book.author));
+			return ((book) => match.test(props.book.title)) || ((book) => match.test(props.book.author));
 		}
 	}
 
@@ -28,7 +25,6 @@ class SearchAllBooks extends Component {
 		    <div className="search-books-bar">
 		      <Link to="/" className="close-search">Close</Link>
 		      <div className="search-books-input-wrapper">
-		        {BOOKSAPI}
 		        <input
 		        	type="text"
 		        	value={this.state.query}
@@ -39,12 +35,15 @@ class SearchAllBooks extends Component {
 		    </div>
 		    <div className="search-books-results">
 		      <FilterBooks
-		      	filterFunc={this.props.matchInput}
+		      	books={this.props.books}
+		      	moveToShelf:{this.moveToShelf}
+		      	filterFunc={this.matchInput}
 		      />
 		    </div>
 		  </div>
 		)
 	}
 }
+
 
 export default SearchAllBooks
