@@ -8,10 +8,10 @@ import './App.css'
 
 class BooksApp extends Component {
 
-  state: { books: {} }
+  state: { books: [] }
 
   getBooks() {
-    BooksAPI.getAll().then(books => this.setState({books}))  
+    BooksAPI.getAll().then(data => this.setState({books: data.books}))  
   }
 
   componentDidMount() {
