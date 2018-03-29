@@ -15,7 +15,7 @@ function RenderShelf(props) {
 		    <div className="bookshelf-books">
 		      <FilterBooks
 		      	books={props.books}
-		        moveToShelf:{moveToShelf}
+		        moveToShelf={props.moveToShelf}
 		      	shelf={shelf}
 		      	filterFunc={booksOnShelf}
 		      />

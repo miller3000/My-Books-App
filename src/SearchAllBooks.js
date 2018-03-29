@@ -15,7 +15,7 @@ class SearchAllBooks extends Component {
 	matchInput = function(book) {
 		if (this.state.query !== '') {
 			let match = new RegExp(escapeRegExp(this.state.query), 'i');
-			return ((book) => match.test(props.book.title)) || ((book) => match.test(props.book.author));
+			return ((book) => match.test(this.props.book.title)) || ((book) => match.test(this.props.book.author));
 		}
 	}
 
@@ -36,7 +36,7 @@ class SearchAllBooks extends Component {
 		    <div className="search-books-results">
 		      <FilterBooks
 		      	books={this.props.books}
-		      	moveToShelf:{this.moveToShelf}
+		      	moveToShelf={this.props.moveToShelf}
 		      	filterFunc={this.matchInput}
 		      />
 		    </div>

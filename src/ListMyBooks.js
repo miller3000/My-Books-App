@@ -19,10 +19,10 @@ function ListMyBooks(props) {
 			</div>
 			<div className="list-books-content">
 			  <div>
-			  	{props.shelves.map((shelf) => (		
+			  	{shelves.map((shelf) => (		
 				  <RenderShelf
 				  	books={props.books}
-			        moveToShelf:{moveToShelf}
+			        moveToShelf={props.moveToShelf}
 				    shelf={props.shelf}
 				  />
 				))}

@@ -4,15 +4,15 @@ import RenderBook from './RenderBook'
 
 function FilterBooks(props) {
 
-	let booksDisplayed = props.books.filter(filterFunc);
+	let booksDisplayed = props.books.filter(props.filterFunc);
 
 	return (
 	  <ol className="books-grid">
-   	  {props.booksDisplayed.map((book) => (	
+   	  {booksDisplayed.map((book) => (	
 		<li className="book-info" key={props.books.id}>
 		  <RenderBook
 		    book={props.book}
-		    moveToShelf={moveToShelf}
+		    moveToShelf={props.moveToShelf}
 	      />
 	    </li>
 	  ))}
