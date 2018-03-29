@@ -12,8 +12,6 @@ class App extends Component {
     this.state = { books : [{name: 'test'}] };
   }
 
-//  state: { books: [{name: 'Andy'}]}
-
   getBooks() {
     BooksAPI.getAll().then(books => this.setState({ books }))  
   }

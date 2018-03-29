@@ -11,13 +11,6 @@ class SearchAllBooks extends Component {
 		this.setState({ query: newQuery.trim() })
 	}
 
-//	matchInput = function(book) {
-//		if (this.state.query !== '') {
-//			let match = new RegExp(escapeRegExp(this.state.query), 'i');
-//			return ((book) => match.test(this.props.book.title)) || ((book) => match.test(this.props.book.author));
-//		}
-//	}
-
 	filterFunc = 'query';
 
 	render () {
@@ -40,7 +33,6 @@ class SearchAllBooks extends Component {
 		      	moveToShelf={this.props.moveToShelf}
 		      	query={this.state.query}
 		      	filterFunc={this.filterFunc}
-//		      	filterFunc={this.matchInput}
 		      />
 		    </div>
 		  </div>
