@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import escapeRegExp from 'escape-string-regexp';
 import FilterBooks from './FilterBooks'
 
 
@@ -12,12 +11,14 @@ class SearchAllBooks extends Component {
 		this.setState({ query: newQuery.trim() })
 	}
 
-	matchInput = function(book) {
-		if (this.state.query !== '') {
-			let match = new RegExp(escapeRegExp(this.state.query), 'i');
-			return ((book) => match.test(this.props.book.title)) || ((book) => match.test(this.props.book.author));
-		}
-	}
+//	matchInput = function(book) {
+//		if (this.state.query !== '') {
+//			let match = new RegExp(escapeRegExp(this.state.query), 'i');
+//			return ((book) => match.test(this.props.book.title)) || ((book) => match.test(this.props.book.author));
+//		}
+//	}
+
+	filterFunc = 'query';
 
 	render () {
 		return (
@@ -37,7 +38,9 @@ class SearchAllBooks extends Component {
 		      <FilterBooks
 		      	books={this.props.books}
 		      	moveToShelf={this.props.moveToShelf}
-		      	filterFunc={this.matchInput}
+		      	query={this.state.query}
+		      	filterFunc={this.filterFunc}
+//		      	filterFunc={this.matchInput}
 		      />
 		    </div>
 		  </div>

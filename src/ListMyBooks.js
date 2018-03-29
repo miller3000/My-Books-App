@@ -1,16 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import RenderShelf from './RenderShelf'
+import RenderShelves from './RenderShelves'
 
 
 function ListMyBooks(props) {
-
-	const shelves = [
-		{ name: 'currentlyReading', key: 'current' },
-	 	{ name: 'wantToRead', key: 'want' },
-	 	{ name: 'alreadyRead', key: 'read' }
-	// 	{ name: 'none', key: 'none'}
-	];
 
 	return (
 		<div className="list-books">
@@ -18,15 +11,10 @@ function ListMyBooks(props) {
 			  <h1>MyReads</h1>
 			</div>
 			<div className="list-books-content">
-			  <div>
-			  	{shelves.map((shelf) => (		
-				  <RenderShelf
-				  	books={props.books}
-			        moveToShelf={props.moveToShelf}
-				    shelf={props.shelf}
-				  />
-				))}
-			  </div>
+			  <RenderShelves
+			  	books={props.books}
+		        moveToShelf={props.moveToShelf}
+			  />
 			</div>
 	        <div className="open-search">
 	          <Link to="/search">Add a book</Link>

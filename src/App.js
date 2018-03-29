@@ -6,12 +6,16 @@ import SearchAllBooks from './SearchAllBooks'
 import './App.css'
 
 
-class BooksApp extends Component {
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { books : [{name: 'test'}] };
+  }
 
-  state: { books: [] }
+//  state: { books: [{name: 'Andy'}]}
 
   getBooks() {
-    BooksAPI.getAll().then(data => this.setState({books: data.books}))  
+    BooksAPI.getAll().then(books => this.setState({ books }))  
   }
 
   componentDidMount() {
@@ -48,4 +52,4 @@ class BooksApp extends Component {
 
 }
 
-export default BooksApp
+export default App
