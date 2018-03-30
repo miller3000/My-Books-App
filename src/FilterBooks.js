@@ -14,12 +14,11 @@ function FilterBooks(props) {
 	const matchQuery = function(book) {
 		if (props.query) {
 			let match = new RegExp(escapeRegExp(props.query), 'i');
-			return ((book) => match.test(book.title)) || ((book) => match.test(book.author));
+			return match.test(book.title) || match.test(book.authors.join(', '));
 		}
 	}
 
 	let displayShelfOrSearch = function(books, shelf) {
-		console.log(props.shelf);
 		if (props.filterFunc === 'query') {
 			return props.books.filter((book) => matchQuery(book))
 		}

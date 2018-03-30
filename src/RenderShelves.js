@@ -3,17 +3,15 @@ import FilterBooks from './FilterBooks'
 
 function RenderShelves(props) {
 
-//	state = { shelf: 'none', booksDisplayed = [] }
-
 	let allShelves, filterFunc, shelves;
+
+	filterFunc = 'shelf';
 
 	shelves = [
 		{id: 'currentlyReading', heading: 'Currently Reading'},
 		{id: 'wantToRead', heading: 'Want to Read'},
-		{id: 'alreadyRead', heading: 'Already Read'}
+		{id: 'read', heading: 'Already Read'}
 	];
-
-	filterFunc = 'shelf';
 
 	allShelves = shelves.map((shelf) => (
 	    <div className="bookshelf" key={shelf.id}>
