@@ -9,19 +9,23 @@ import './App.css'
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { books : [{name: 'test'}] };
+    this.state = { books : [{name: 'test'}], currentBook: {} };
   }
 
-  getBooks() {
-    BooksAPI.getAll().then(books => this.setState({ books }))  
+  getBooks = () => {
+      console.log('Function running');
+      BooksAPI.getAll().then(books => this.setState({ books })); 
   }
 
   componentDidMount() {
     this.getBooks();
   }
 
-  moveToShelf(event) {
-    BooksAPI.update(this.props.book, event.target.value).then(this.getBooks());
+  moveToShelf = (book, event) => {
+    console.log(book);
+    let newShelf = event.target.value;
+    console.log(newShelf);
+    BooksAPI.update(book, newShelf).then(this.getBooks());
   }
 
   render() {

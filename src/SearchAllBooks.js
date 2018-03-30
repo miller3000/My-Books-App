@@ -30,9 +30,9 @@ class SearchAllBooks extends Component {
 		    <div className="search-books-results">
 		      <FilterBooks
 		      	books={this.props.books}
+		      	filterFunc={this.filterFunc}
 		      	moveToShelf={this.props.moveToShelf}
 		      	query={this.state.query}
-		      	filterFunc={this.filterFunc}
 		      />
 		    </div>
 		  </div>

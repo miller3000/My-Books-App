@@ -20,7 +20,7 @@ function RenderBook(props) {
 		    <div className="book-top">
 		      <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: `url(${imageLink})` }}></div>
 			      <SetBookShelf
-					book={props.book}
+					book={book}
 					moveToShelf={props.moveToShelf}
 			      />
 		    </div>
