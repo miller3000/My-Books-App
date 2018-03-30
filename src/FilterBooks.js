@@ -5,40 +5,40 @@ import escapeRegExp from 'escape-string-regexp';
 
 function FilterBooks(props) {
 
-	const checkShelf = function(book) {
-		return props.book.shelf === props.shelf.name;
+	const checkShelf = function(book, shelf) {
+		if (props.shelf) {
+			return book.shelf === props.shelf.id;
+		}
 	}
-
-	const match = new RegExp(escapeRegExp(props.query), 'i');
 
 	const matchQuery = function(book) {
-		if (props.query !== '') {
-			return ((book) => match.test(props.book.title)) || ((book) => match.test(props.book.author));
+		if (props.query) {
+			let match = new RegExp(escapeRegExp(props.query), 'i');
+			return ((book) => match.test(book.title)) || ((book) => match.test(book.author));
 		}
 	}
 
-	let booksDisplayed = function() {
+	let displayShelfOrSearch = function(books, shelf) {
+		console.log(props.shelf);
 		if (props.filterFunc === 'query') {
-			props.books.filter(matchQuery);
+			return props.books.filter((book) => matchQuery(book))
 		}
 		if (props.filterFunc === 'shelf') {
-			props.books.filter(checkShelf);
+			return props.books.filter((book) => checkShelf(book, shelf));
 		}
 	}
 
-	let mapBooksGrid = function() {
-		booksDisplayed.map((book) => (	
-		<li className="book-info" key={props.book.id}>
+	let grid = displayShelfOrSearch(props.books).map((book) => (
+		<li className="book-info" key={book.id}>
 		  <RenderBook
-		    book={props.book}
+		    book={book}
+		    books={props.books}
 		    moveToShelf={props.moveToShelf}
 	      />
 	    </li>
 	  ))
-	}
-
-	return (<ol className="books-grid">{mapBooksGrid}</ol>)
-
+		
+	return (<ol className="books-grid">{grid}</ol>)
 }
 
 export default FilterBooks

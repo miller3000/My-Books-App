@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 
 class SetBookShelf extends Component {
 
+//	selectCurrentShelf(book) {
+//		
+//	}
+
 	render () {
 		return (
 	      <div className="book-shelf-changer">

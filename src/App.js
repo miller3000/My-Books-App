@@ -26,7 +26,7 @@ class App extends Component {
 
   render() {
     return (
-    <div className="app">
+    <div className="app" key="books-app">
 
       <Route exact path='/' render={() => (
         <ListMyBooks
