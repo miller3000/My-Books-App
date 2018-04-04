@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import FilterBooks from './FilterBooks'
+import RenderGrid from './RenderGrid'
 
 
 class SearchAllBooks extends Component {
@@ -28,11 +28,12 @@ class SearchAllBooks extends Component {
 		      </div>
 		    </div>
 		    <div className="search-books-results">
-		      <FilterBooks
+		      <RenderGrid
 		      	books={this.props.books}
 		      	filterFunc={this.filterFunc}
 		      	moveToShelf={this.props.moveToShelf}
 		      	query={this.state.query}
+          		value={this.props.value}
 		      />
 		    </div>
 		  </div>

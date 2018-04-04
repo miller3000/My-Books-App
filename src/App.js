@@ -9,11 +9,10 @@ import './App.css'
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { books : [{name: 'test'}], currentBook: {} };
+    this.state = { books: [{name: 'test'}], value: 'none' };
   }
 
   getBooks = () => {
-      console.log('Function running');
       BooksAPI.getAll().then(books => this.setState({ books })); 
   }
 
@@ -22,9 +21,7 @@ class App extends Component {
   }
 
   moveToShelf = (book, event) => {
-    console.log(book);
     let newShelf = event.target.value;
-    console.log(newShelf);
     BooksAPI.update(book, newShelf).then(this.getBooks());
   }
 
@@ -36,6 +33,7 @@ class App extends Component {
         <ListMyBooks
           books={this.state.books}
           moveToShelf={this.moveToShelf}
+          value={this.state.value}
         />
       )}
       />
@@ -44,6 +42,7 @@ class App extends Component {
         <SearchAllBooks
           books={this.state.books}
           moveToShelf={this.moveToShelf}
+          value={this.state.value}
         />
       )}
       />

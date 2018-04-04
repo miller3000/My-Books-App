@@ -1,5 +1,5 @@
 import React from 'react'
-import FilterBooks from './FilterBooks'
+import RenderGrid from './RenderGrid'
 
 function RenderShelves(props) {
 
@@ -17,12 +17,13 @@ function RenderShelves(props) {
 	    <div className="bookshelf" key={shelf.id}>
 		    <h2 className="bookshelf-title">{shelf.heading}</h2>
 			    <div className="bookshelf-books">
-				  <FilterBooks
+				  <RenderGrid
 				  	books={props.books}
 				    filterFunc={filterFunc}
 			        moveToShelf={props.moveToShelf}
 			        shelf={shelf}
 			        shelves={shelves}
+			        value={props.value}
 				  />
 				</div>
 		</div>

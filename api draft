@@ -55,6 +55,9 @@ fetch('https://reactnd-books-api.udacity.com/search', {
   }).then(res => res.json())
     .then(data => console.log(data.books))
 
+      let match = new RegExp('Austen', 'i');
+
+let match = new RegExp('Austen', 'i');
 fetch('https://reactnd-books-api.udacity.com/search', {
     method: 'POST',
     headers: {
@@ -62,6 +65,10 @@ fetch('https://reactnd-books-api.udacity.com/search', {
       'Authorization': 'Client-ID abc123',
       'Content-Type': 'application/json'
     },
-    body: 'Austen'
+    body: JSON.stringify(match)
   }).then(res => res.json())
     .then(data => console.log(data.books))
+
+
+- search forbidden
+

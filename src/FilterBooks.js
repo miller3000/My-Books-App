@@ -1,46 +1,46 @@
-import React from 'react'
-import RenderBook from './RenderBook'
+import * as BooksAPI from './BooksAPI'
 import escapeRegExp from 'escape-string-regexp';
 
+	const filterQuery = function(query) {
 
-function FilterBooks(props) {
+		console.log('function on 2')
+
+		const dummyBook = {
+			authors: [],
+			id: '',
+			imageLinks: '',
+			title: 'No books found'
+		}
+
+		if (!query) {
+			return [ dummyBook ];
+		} else {
+			console.log(query);
+			let searchTerm = new RegExp(escapeRegExp(query), 'i');
+			let searchObject = {query: searchTerm, maxResults: 20}
+			console.log(BooksAPI.search(searchObject));
+			return BooksAPI.search(searchObject); 
+		}
+	}
 
 	const checkShelf = function(book, shelf) {
-		if (props.shelf) {
-			return book.shelf === props.shelf.id;
+		return book.shelf === shelf.id;
+	}
+
+	const filterShelves = function(books, shelf) {
+		return books.filter((book) => checkShelf(book, shelf));
+	}
+
+	export const getResults = function(books, filter, query, shelf) {
+		if (filter === 'query') {
+			console.log('function on');
+			return filterQuery(query);
+		}
+		if (filter === 'shelf' && shelf) {
+			return filterShelves(books, shelf);
 		}
 	}
 
-	const matchQuery = function(book) {
-		if (props.query) {
-			let match = new RegExp(escapeRegExp(props.query), 'i');
-			return match.test(book.title) || match.test(book.authors.join(', '));
-		}
-	}
-
-	let displayShelfOrSearch = function(books, shelf) {
-		if (props.filterFunc === 'query') {
-			return props.books.filter((book) => matchQuery(book))
-		}
-		if (props.filterFunc === 'shelf') {
-			return props.books.filter((book) => checkShelf(book, shelf));
-		}
-	}
-
-	let grid = displayShelfOrSearch(props.books).map((book) => (
-		<li className="book-info" key={book.id}>
-		  <RenderBook
-		    book={book}
-		    books={props.books}
-		    moveToShelf={props.moveToShelf}
-	      />
-	    </li>
-	  ))
-		
-	return (<ol className="books-grid">{grid}</ol>)
-}
-
-export default FilterBooks
 
 
 

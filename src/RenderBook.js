@@ -22,6 +22,7 @@ function RenderBook(props) {
 			      <SetBookShelf
 					book={book}
 					moveToShelf={props.moveToShelf}
+          			value={props.value}
 			      />
 		    </div>
 		    <div className="book-title">{book.title}</div>
