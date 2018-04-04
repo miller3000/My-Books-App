@@ -21,9 +21,9 @@ function RenderShelves(props) {
 				  	books={props.books}
 				    filterFunc={filterFunc}
 			        moveToShelf={props.moveToShelf}
+			        selectedShelf={props.selectedShelf}
 			        shelf={shelf}
 			        shelves={shelves}
-			        value={props.value}
 				  />
 				</div>
 		</div>

@@ -1,46 +1,30 @@
-import * as BooksAPI from './BooksAPI'
-import escapeRegExp from 'escape-string-regexp';
+const currentShelf = function(book, shelf) {
+	return book.shelf === shelf.id;
+}
 
-	const filterQuery = function(query) {
+const filterShelves = function(books, shelf) {
+	let shelfMatches = books.filter((book) => currentShelf(book, shelf));
+	return shelfMatches;
+}
 
-		console.log('function on 2')
+export const getResults = function(books, filter, searchResults, shelf) {
+	const dummyBook = {
+		authors: [],
+		id: '',
+		imageLinks: '',
+		title: 'No books found'
+	};
 
-		const dummyBook = {
-			authors: [],
-			id: '',
-			imageLinks: '',
-			title: 'No books found'
-		}
-
-		if (!query) {
-			return [ dummyBook ];
-		} else {
-			console.log(query);
-			let searchTerm = new RegExp(escapeRegExp(query), 'i');
-			let searchObject = {query: searchTerm, maxResults: 20}
-			console.log(BooksAPI.search(searchObject));
-			return BooksAPI.search(searchObject); 
-		}
+	if (filter === 'query') {
+		if (!searchResults) { return [ dummyBook ] }
+			else {
+				console.log(searchResults);
+				return searchResults
+			}
 	}
-
-	const checkShelf = function(book, shelf) {
-		return book.shelf === shelf.id;
+	if (filter === 'shelf' && shelf) {
+		return filterShelves(books, shelf);
 	}
-
-	const filterShelves = function(books, shelf) {
-		return books.filter((book) => checkShelf(book, shelf));
-	}
-
-	export const getResults = function(books, filter, query, shelf) {
-		if (filter === 'query') {
-			console.log('function on');
-			return filterQuery(query);
-		}
-		if (filter === 'shelf' && shelf) {
-			return filterShelves(books, shelf);
-		}
-	}
-
-
+}
 
 

@@ -1,28 +1,14 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import RenderGrid from './RenderGrid'
-import escapeRegExp from 'escape-string-regexp';
-import * as BooksAPI from './BooksAPI'
 
 
 class SearchAllBooks extends Component {
 
-	state = { query: '', searchResults: [] };
+	state = { q: '' };
 
 	updateQuery = (newQuery) => {
-		this.setState({ query: newQuery.trim() })
-	}
-
-	searchAPI = (query, searchResults) => {
-//		let queryExp = new RegExp(escapeRegExp(query), 'i');
-		BooksAPI.search(query).then(books => this.setState({ searchResults: books }));
-	}
-
-	getBooks = (query, searchResults, event) => {
-		this.updateQuery(event.target.value);
-		this.searchAPI(this.state.query, this.state.searchResults);
-		console.log(this.state.query);
-		console.log(this.state.searchResults);
+		this.setState({ q: newQuery.trim() })
 	}
 
 	filterFunc = 'query';
@@ -35,9 +21,9 @@ class SearchAllBooks extends Component {
 		      <div className="search-books-input-wrapper">
 		        <input
 		        	type="text"
-		        	value={this.state.query}
+		        	value={this.state.q}
 		        	placeholder="Search by title or author"
-		        	onChange={(event) => this.getBooks(this.state.query, this.state.searchResults, event)}
+		        	onChange={(event) => this.updateQuery(event.target.value)}
 		        />
 		      </div>
 		    </div>
@@ -46,8 +32,8 @@ class SearchAllBooks extends Component {
 		      	books={this.props.books}
 		      	filterFunc={this.filterFunc}
 		      	moveToShelf={this.props.moveToShelf}
-		      	searchResults={this.state.searchResults}
-          		selectedShelf={this.props.selectedShelf}
+		      	q={this.state.q}
+          		value={this.props.value}
 		      />
 		    </div>
 		  </div>

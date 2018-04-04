@@ -9,26 +9,28 @@ import SetBookShelf from './SetBookShelf'
 //		};
 
 
+
 function RenderBook(props) {
 
 	let book = props.book;
-	let author = book.authors.join(', ');
-	let imageLink = book.imageLinks.thumbnail;
+	let author = (book.authors) ? book.authors.join(', ') : '';
+	let imageLink = (book.imageLinks) ? book.imageLinks.thumbnail : '';
 
-		return (
-		  <div className="book">
+	return (
+		<div className="book">
 		    <div className="book-top">
 		      <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: `url(${imageLink})` }}></div>
 			      <SetBookShelf
 					book={book}
 					moveToShelf={props.moveToShelf}
-          			value={props.value}
+        			selectedShelf={props.selectedShelf}
 			      />
-		    </div>
+		    </div>		    
 		    <div className="book-title">{book.title}</div>
 		    <div className="book-authors">{author}</div>
-		  </div>			
-		)
+		  </div>	
+	)
+
 }
 
 export default RenderBook

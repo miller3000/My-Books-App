@@ -14,7 +14,7 @@ function ListMyBooks(props) {
 			  <RenderShelves
 			  	books={props.books}
 		        moveToShelf={props.moveToShelf}
-          		value={props.value}
+          		selectedShelf={props.selectedShelf}
 			  />
 			</div>
 	        <div className="open-search">
