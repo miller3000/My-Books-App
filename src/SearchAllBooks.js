@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import RenderGrid from './RenderGrid'
-import escapeRegExp from 'escape-string-regexp';
 import * as BooksAPI from './BooksAPI'
 
 
@@ -14,7 +13,6 @@ class SearchAllBooks extends Component {
 	}
 
 	searchAPI = (query, searchResults) => {
-//		let queryExp = new RegExp(escapeRegExp(query), 'i');
 		BooksAPI.search(query).then(books => this.setState({ searchResults: books }));
 	}
 

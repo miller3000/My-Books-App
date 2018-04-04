@@ -24,38 +24,7 @@ function RenderGrid(props) {
 		)
 	)
 
-
-	let mapGrid = function(books) {
-		if (books) {
-			console.log(mapBooks(books));
-			return mapBooks(books);
-		}
-	}
-
-//	
-//	let grid = mapGrid(booksOnShelf);
-//
-
-	return (<ol className="books-grid">
-				<div>
-					{mapBooks}
-				</div>
-			</ol>)
-
-/*	return(
-		<ol className="books-grid">
-			{booksOnShelf.map((book) => (
-			<li className="book-info" key={book.id}>
-			  <RenderBook
-			    book={props.book}
-			    books={props.books}
-			    moveToShelf={props.moveToShelf}
-				selectedShelf={props.selectedShelf}
-		      />
-		    </li>))}
-		</ol>
-		)
-*/
+	return (<ol className="books-grid">{mapBooks}</ol>)
 
 }
 

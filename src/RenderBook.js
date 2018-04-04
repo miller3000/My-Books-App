@@ -15,6 +15,7 @@ function RenderBook(props) {
 	let book = props.book;
 	let author = (book.authors) ? book.authors.join(', ') : '';
 	let imageLink = (book.imageLinks) ? book.imageLinks.thumbnail : '';
+	let defaultShelf = (book.shelf) ? book.shelf : 'default';
 
 	return (
 		<div className="book">
@@ -22,6 +23,7 @@ function RenderBook(props) {
 		      <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: `url(${imageLink})` }}></div>
 			      <SetBookShelf
 					book={book}
+					defaultShelf={defaultShelf}
 					moveToShelf={props.moveToShelf}
         			selectedShelf={props.selectedShelf}
 			      />
