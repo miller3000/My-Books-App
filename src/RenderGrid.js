@@ -5,11 +5,10 @@ import * as FilterBooks from './FilterBooks';
 function RenderGrid(props) {
 
 	let books = props.books;
-	let filterFunc = props.filterFunc;
 	let searchResults = props.searchResults;
 	let shelf = props.shelf;
-	
-	let booksOnShelf = FilterBooks.getResults(books, filterFunc, searchResults, shelf)
+
+	let booksOnShelf = FilterBooks.getResults(books, searchResults, shelf)
 
 	let mapBooks = booksOnShelf.map((book) => (
 		<li className="book-info" key={book.id}>
@@ -17,7 +16,6 @@ function RenderGrid(props) {
 			  <RenderBook
 			    book={book}
 			    books={books}
-//			    moveToShelf={props.moveToShelf}
 				updateBooks={props.updateBooks}
 	      	  />
 			</div>

@@ -1,3 +1,5 @@
+import * as ShelfFunc from './ShelfFunc'
+
 const currentShelf = function(book, shelf) {
 	return book.shelf === shelf.id;
 }
@@ -7,13 +9,15 @@ const filterShelves = function(books, shelf) {
 	return shelfMatches;
 }
 
-export const getResults = function(books, filter, searchResults, shelf) {
+export const getResults = function(books, searchResults, shelf) {
 	const dummyBook = {
 		authors: [],
 		id: '',
 		imageLinks: '',
 		title: 'No books found'
 	};
+
+	let filter = ShelfFunc.setFilter();
 
 	if (filter === 'query') {
 		if (!searchResults) { return [ dummyBook ] }

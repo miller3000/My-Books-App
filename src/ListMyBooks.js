@@ -13,7 +13,6 @@ function ListMyBooks(props) {
 			<div className="list-books-content">
 			  <RenderShelves
 			  	books={props.books}
-//		        moveToShelf={props.moveToShelf}
 				updateBooks={props.updateBooks}
 			  />
 			</div>

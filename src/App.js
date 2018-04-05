@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import ListMyBooks from './ListMyBooks'
 import SearchAllBooks from './SearchAllBooks'
+import * as ShelfFunc from './ShelfFunc'
 import './App.css'
 
 //search results are not filtering as more letters are typed into the screen
@@ -59,6 +60,33 @@ import './App.css'
 //  }
 
 
+// if path is /
+//   filter: shelfFunc
+// if path is /search
+//   filter: searchFunc
+
+  // state = { query: '', searchResults: [] };
+
+  // updateQuery = (newQuery) => {
+  //  this.setState({ query: newQuery.trim() })
+  // }
+
+  // searchAPI = (query, searchResults) => {
+  //  BooksAPI.search(query).then(books => this.setState({ searchResults: books }));
+  // }
+
+  // getBooks = (query, searchResults, event) => {
+  //  this.updateQuery(event.target.value);
+  //  this.searchAPI(this.state.query, this.state.searchResults);
+  //  console.log(this.state.query);
+  //  console.log(this.state.searchResults);
+  // }
+
+  // filterFunc = 'query';
+  // 
+  // 
+  // 
+  // SHOULDCOMPONENTUPDATE - SEARCHBOOKS VS UPDATEBOOKS ???
 
 
 class App extends Component {
@@ -66,9 +94,11 @@ class App extends Component {
     super(props);
     this.state = {
       books: [ {name: 'test title'} ],
+      searchResults: [],
+      query: '',
       update: {
         book: {},
-        shelf: ''
+        shelf: '',
       }
     }
   }
@@ -81,39 +111,19 @@ class App extends Component {
     this.getBooks();
   }
 
-  setBook = function(selected) {
-    console.log(selected.id);
-    return this.state.books.findIndex(book => book.id === selected.id);
+  searchBooks = (searchEvent) => {
+    let query = searchEvent.target.value.trim();
+    this.setState({ query: query });
+    BooksAPI.search(this.state.query)
+    .then(books => this.setState({ searchResults: books }));
   }
 
-  setNewBook = function(bookIdx, shelf) {
-    console.log(bookIdx);
-    let oldBook = this.state.books[bookIdx];
-    console.log(oldBook);
-    let newShelf = { shelf: shelf }
-    console.log(newShelf);
-    let newBook = Object.assign(oldBook, newShelf);
-    console.log(newBook);
-    let newBooks = this.state.books;
-    newBooks[bookIdx] = newBook;
-    console.log(newBooks);
-    return newBooks;
-  }
-
-  changeShelf = function(selected, shelf) {
-//    books = this.state.books;
-//    console.log(books);
-    let idx = this.setBook(selected);
-    console.log(idx);
-    return this.setNewBook(idx, shelf);
-  }
-
-  updateBooks = (book, event) => {
-    let selected = book;
-    console.log(selected);
-    let shelf = event.target.value;
-    console.log(shelf);
-    let newBooks = this.changeShelf(selected, shelf);
+  updateBooks = (book, shelfEvent) => {
+    let filter = ShelfFunc.setFilter();
+    let selectedBook = book;
+    let shelf = shelfEvent.target.value;
+    let theseBooks = (filter === 'shelf') ? this.state.books : this.state.searchResults;
+    let newBooks = ShelfFunc.changeShelf(theseBooks, selectedBook, shelf);
     this.setState({
       books: newBooks,
       update: {book: book, shelf: shelf}
@@ -121,7 +131,6 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    console.log(this.state.update);
     BooksAPI.update(this.state.update.book, this.state.update.shelf);
   }
 
@@ -133,7 +142,6 @@ class App extends Component {
       <Route exact path='/' render={() => (
         <ListMyBooks
           books={this.state.books}
-//          moveToShelf={this.moveToShelf}
           updateBooks={this.updateBooks}
         />
       )}
@@ -142,8 +150,10 @@ class App extends Component {
       <Route path='/search' render={() => (
         <SearchAllBooks
           books={this.state.books}
-//          moveToShelf={this.moveToShelf}
-          updateBook={this.updateBooks}
+          query={this.state.query}
+          searchBooks={this.searchBooks}
+          searchResults={this.state.searchResults}
+          updateBooks={this.updateBooks}
         />
       )}
       />
