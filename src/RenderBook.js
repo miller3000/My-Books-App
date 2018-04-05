@@ -24,8 +24,8 @@ function RenderBook(props) {
 			      <SetBookShelf
 					book={book}
 					defaultShelf={defaultShelf}
-					moveToShelf={props.moveToShelf}
-        			selectedShelf={props.selectedShelf}
+//					moveToShelf={props.moveToShelf}
+					updateBooks={props.updateBooks}
 			      />
 		    </div>		    
 		    <div className="book-title">{book.title}</div>

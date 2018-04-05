@@ -20,8 +20,8 @@ function RenderShelves(props) {
 				  <RenderGrid
 				  	books={props.books}
 				    filterFunc={filterFunc}
-			        moveToShelf={props.moveToShelf}
-			        selectedShelf={props.selectedShelf}
+//			        moveToShelf={props.moveToShelf}
+					updateBooks={props.updateBooks}
 			        shelf={shelf}
 			        shelves={shelves}
 				  />

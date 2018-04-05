@@ -8,6 +8,7 @@ function RenderGrid(props) {
 	let filterFunc = props.filterFunc;
 	let searchResults = props.searchResults;
 	let shelf = props.shelf;
+	
 	let booksOnShelf = FilterBooks.getResults(books, filterFunc, searchResults, shelf)
 
 	let mapBooks = booksOnShelf.map((book) => (
@@ -16,8 +17,8 @@ function RenderGrid(props) {
 			  <RenderBook
 			    book={book}
 			    books={books}
-			    moveToShelf={props.moveToShelf}
-	            selectedShelf={props.selectedShelf}
+//			    moveToShelf={props.moveToShelf}
+				updateBooks={props.updateBooks}
 	      	  />
 			</div>
 	    </li>

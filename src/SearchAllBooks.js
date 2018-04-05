@@ -43,9 +43,9 @@ class SearchAllBooks extends Component {
 		      <RenderGrid
 		      	books={this.props.books}
 		      	filterFunc={this.filterFunc}
-		      	moveToShelf={this.props.moveToShelf}
+//		      	moveToShelf={this.props.moveToShelf}
 		      	searchResults={this.state.searchResults}
-          		selectedShelf={this.props.selectedShelf}
+		      	updateBooks={this.props.updateBooks}
 		      />
 		    </div>
 		  </div>
