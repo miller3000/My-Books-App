@@ -34,7 +34,7 @@ class SearchAllBooks extends Component {
 		        	type="text"
 		        	value={this.props.query}
 		        	placeholder="Search by title or author"
-		        	onChange={(event) => this.props.searchBooks(event)}
+		        	onChange={(event) => this.props.searchForBooks(event)}
 		        />
 		      </div>
 		    </div>
