@@ -1,3 +1,16 @@
+WRITE A PROMISE FOR YOUR FUNCTIONS
+
+//search results are not filtering as more letters are typed into the screen
+//if query does not/cannot match a search term, no books should be displayed
+//
+//should immediately re-render when property changes- componentDidUpdate(); - make it quicker using LOCAL state
+//
+//if rendered, shelf should equal selectedshelf... seems to be working?
+//if searched, should be able to add shelf property to selectedshelf... seems to be working?
+//displayed shelf and state shelf are not aligned... do i need selectedshelf at all?
+//
+//
+
 //search results are not filtering as more letters are typed into the screen
 //if query does not/cannot match a search term, no books should be displayed
 //

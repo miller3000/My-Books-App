@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
-//import createHistory from "history/createBrowserHistory";
 import * as BooksAPI from './BooksAPI'
 import ListMyBooks from './ListMyBooks'
 import SearchAllBooks from './SearchAllBooks'
-import * as ShelfFunc from './ShelfFunc'
+import * as Heart from './MyBooksFunc'
 import './App.css'
 
 
@@ -22,68 +21,66 @@ class App extends Component {
     }
   }
 
-  history = this.props.history;
-  location = history.location;
-
-//  history = createHistory();
-//  location = history.location;
-
   getBooks = () => {
     BooksAPI.getAll().then(books => this.setState({ books })); 
   }
+
+//  updateSearch = function(results) {
+//    return ShelfFunc.updateResults(results, this.state.books);
+//  }
+//        this.setState({ searchResults: this.updateSearch(books) }));
 
   searchForBooks = (searchEvent) => {
     let query = searchEvent.target.value.trim();
     this.setState({ query: query });
     BooksAPI.search(this.state.query)
-    .then(books => this.setState({ searchResults: books }));
+      .then(books =>
+        this.setState({ searchResults: Heart.updateResults(books, this.state.books)})
+      )
   }
 
   updateBooks = (selectedBook, shelfEvent) => {
-    let filter = ShelfFunc.setFilter();
+    let filter = Heart.setFilter();
     let selectedShelf = shelfEvent.target.value;
     let theseBooks = (filter === 'shelf') ? this.state.books : this.state.searchResults;
-    let updatedBooks = ShelfFunc.changeShelf(theseBooks, selectedBook, selectedShelf);
+    let updatedBooks = Heart.changeShelf(theseBooks, selectedBook, selectedShelf);
     this.setState({
       books: updatedBooks,
       toUpdate: {book: selectedBook, shelf: selectedShelf}
     });
   }
 
-  updateSearch = () => {
-    let resultsWithShelf = ShelfFunc.updateResults(this.state.searchResults, this.state.books);
-    this.setState({ searchResults: resultsWithShelf });
-  }
-
-  updateAPI = (prevState) => {
-    if (this.state.toUpdate !== prevState.toUpdate) {
-      console.log('function ON');
+  updateAPI = () => {
+    if (this.state.toUpdate.shelf) {
       BooksAPI.update(this.state.toUpdate.book, this.state.toUpdate.shelf);
-      console.log(this.state.toUpdate);
+      this.setState({ toUpdate: { book: {}, shelf: '' }});
     }  
   }
 
-  updateDisplay = function(location, prevProps, prevState) {
-    if (this.props.location !== this.prevProps.location) {
-      this.props.location.pathname === '/search' ? this.updateSearch() : this.getBooks();
-    }
-  }
+  updateDisplay = function(props, prevProps, prevState) {
+//    if (this.props.history.location !== this.prevProps.history.location) {
+    console.log('updateDisplay');
+    this.props.history.location.pathname === '/search' ? this.updateSearch() : this.getBooks();
+//     }
+   }
 
   componentDidMount() {
     this.getBooks();
   }
   
-  // shouldComponentUpdate(location, nextProps, nextState) {
-  //   return this.state.toUpdate !== nextState.toUpdate
-  //   || this.props.location !== nextProps.location;
-  // }
+  shouldComponentUpdate(props, nextProps, nextState) {
+    return this.state.toUpdate !== nextState.toUpdate
+//      || this.props.history.listen(this.props.history.location.pathname)
+  //    || this.props.location !== nextProps.location;
+  }
 
-  componentDidUpdate(location, prevProps, prevState) {
-    console.log(history);
-    console.log(location.pathname);
-    history.listen(location => console.log(location))
+  componentDidUpdate(props, prevProps, prevState) {
+//    console.log(this.props.history.location.pathname);
+    this.props.history.listen(pathname =>
+      this.updateDisplay(props, prevProps, prevState));
     this.updateAPI(prevState);
-    this.updateDisplay(location, prevProps);
+//    this.updateAPI(prevState);
+//    this.updateDisplay(location, prevProps);
 //    .then(this.updateDisplay(location, prevProps));
   }
 

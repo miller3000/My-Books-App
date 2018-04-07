@@ -1,4 +1,4 @@
-import * as ShelfFunc from './ShelfFunc'
+import * as Heart from './MyBooksFunc'
 
 const currentShelf = function(book, shelf) {
 	return book.shelf === shelf.id;
@@ -17,12 +17,12 @@ export const getResults = function(books, searchResults, shelf) {
 		title: 'No books found'
 	};
 
-	let filter = ShelfFunc.setFilter();
+	let filter = Heart.setFilter();
 
 	if (filter === 'query') {
 		if (!searchResults) { return [ dummyBook ] }
 			else {
-				console.log(searchResults);
+//				console.log(searchResults);
 				return searchResults
 			}
 	}

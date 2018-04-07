@@ -8,8 +8,8 @@ export const setFilter = function(){
 
 //FOUR UPDATE BOOKS FUNCTIONS
 const selectBook = function(books, selected) {
-  console.log(books);
-  console.log(selected);
+//  console.log(books);
+//  console.log(selected);
   return books.findIndex(book => book.id === selected.id);
 }
 
