@@ -5,25 +5,6 @@ import RenderGrid from './RenderGrid'
 
 class SearchAllBooks extends Component {
 
-	// state = { query: '', searchResults: [] };
-
-	// updateQuery = (newQuery) => {
-	// 	this.setState({ query: newQuery.trim() })
-	// }
-
-	// searchAPI = (query, searchResults) => {
-	// 	BooksAPI.search(query).then(books => this.setState({ searchResults: books }));
-	// }
-
-	// getBooks = (query, searchResults, event) => {
-	// 	this.updateQuery(event.target.value);
-	// 	this.searchAPI(this.state.query, this.state.searchResults);
-	// 	console.log(this.state.query);
-	// 	console.log(this.state.searchResults);
-	// }
-
-	// filterFunc = 'query';
-
 	render () {
 		return (
 		  <div className="search-books">

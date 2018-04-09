@@ -12,10 +12,10 @@ import SetBookShelf from './SetBookShelf'
 
 function RenderBook(props) {
 
-	let book = props.book;
-	let author = (book.authors) ? book.authors.join(', ') : '';
-	let imageLink = (book.imageLinks) ? book.imageLinks.thumbnail : '';
-	let defaultShelf = (book.shelf) ? book.shelf : 'default';
+	const book = props.book;
+	const author = (book.authors) ? book.authors.join(', ') : '';
+	const imageLink = (book.imageLinks) ? book.imageLinks.thumbnail : '';
+	const defaultShelf = (book.shelf) ? book.shelf : 'default';
 
 	return (
 		<div className="book">
