@@ -2,9 +2,18 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import RenderShelves from './RenderShelves'
 
+/**
+ * SUMMARY: Renders index page in JSX code, including page title and three shelves with books, as well as link to search page.
+ * PARENT: App.js
+ * CHILD: RenderShelves.js
+ * MORE INFO: App.js
+ *
+ * Pass-through props:
+ * - books {array of "book" objects}
+ * - updateBooks {onChange function}
+ */
 
 function ListMyBooks(props) {
-
 	return (
 		<div className="list-books">
 			<div className="list-books-title">
@@ -13,7 +22,7 @@ function ListMyBooks(props) {
 			<div className="list-books-content">
 			  <RenderShelves
 			  	books={props.books}
-				updateBooks={props.updateBooks}
+				onChangeShelf={props.onChangeShelf}
 			  />
 			</div>
 	        <div className="open-search">

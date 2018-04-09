@@ -1,9 +1,5 @@
-const currentShelf = function(book, shelf) {
-  return book.shelf === shelf.id;
-}
-
 const filterShelves = function(books, shelf) {
-  return books.filter((book) => currentShelf(book, shelf));
+  return books.filter((book) => book.shelf === shelf.id);
 }
 
 export const setFilter = function(){
@@ -16,7 +12,7 @@ export const getResults = function(books, searchResults, shelf) {
   	return searchResults;
   }
   if (filter === 'shelf' && shelf) {
-	return filterShelves(books, shelf);
+	  return filterShelves(books, shelf);
   }
 }
 

@@ -5,7 +5,7 @@ const selectBook = function(books, selected) {
 
 const updateOldBook = function(books, bookIdx, shelf) {
   const oldBook = books[bookIdx];
-  const newShelf = { shelf: shelf }
+  const newShelf = {shelf: shelf}
   return Object.assign(oldBook, newShelf);
 }
 
@@ -23,7 +23,7 @@ export const changeShelf = function(books, selected, shelf) {
 
 
 //TWO COMPILE SEARCH RESULTS FUNCTIONS
-const mergeResults = (results, myBooks) => {
+const mergeResults = function(results, myBooks) {
   for (let i = 0; i < myBooks.length; i++) {
     let idx = selectBook(results, myBooks[i]);
     if (idx !== -1) {
@@ -33,7 +33,7 @@ const mergeResults = (results, myBooks) => {
   return results;
 }
 
-export const updateResults = (results, myBooks) => {
+export const updateResults = function(results, myBooks) {
   if (!results) {
     return []
   } else {

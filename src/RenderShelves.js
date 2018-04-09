@@ -1,8 +1,22 @@
 import React from 'react'
 import RenderGrid from './RenderGrid'
 
-function RenderShelves(props) {
+/**
+ * SUMMARY: Renders shelves within index (JSX) page. Maps each of three shelves to a separate grid of books.
+ * PARENT: ListMyBooks.js
+ * CHILD: RenderGrid.js
+ * MORE INFO: App.js
+ * 
+ * @param {array of "shelf" objects} shelves [organizes book objects according to three categories]
+ * @param {map function} allShelves [maps shelves array to JSX code]
+ *
+ * Passed-through props:
+ * - books {array of "book" objects}
+ * - updateBooks {onChange function}
+ * 
+ */
 
+function RenderShelves(props) {
 	let allShelves, shelves;
 
 	shelves = [
@@ -12,12 +26,12 @@ function RenderShelves(props) {
 	];
 
 	allShelves = shelves.map((shelf) => (
-	    <div className="bookshelf" key={shelf.id}>
+	    <div key={shelf.id} className="bookshelf">
 		    <h2 className="bookshelf-title">{shelf.heading}</h2>
 			    <div className="bookshelf-books">
 				  <RenderGrid
 				  	books={props.books}
-					updateBooks={props.updateBooks}
+					onChangeShelf={props.onChangeShelf}
 			        shelf={shelf}
 			        shelves={shelves}
 				  />
@@ -25,9 +39,8 @@ function RenderShelves(props) {
 		</div>
 		))
 
-	return (<div>{allShelves}</div>)
+	return <div>{allShelves}</div>
 }
-
 
 export default RenderShelves
 

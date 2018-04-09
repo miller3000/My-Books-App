@@ -1,5 +1,8 @@
 const api = "https://reactnd-books-api.udacity.com"
 
+/**
+ * SUMMARY: Set of API functions provided by Udacity for MyReads project. Allows book search and retrieval.
+ */
 
 // Generate a unique token for storing your bookshelf data on the backend server.
 let token = localStorage.token
