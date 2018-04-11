@@ -1,19 +1,47 @@
+/**
+* My Books
+* 
+* @react-DOM
+* LISTMYBOOKS.JS
+* PARENT: App.js
+* CHILDREN: RenderShelves.js
+* REACT COMPONENT TREE:
+*
+*           Index
+*            |
+*           App
+* |----------|---------|
+* ListMyBooks          SearchAllBooks
+* RenderShelves        |
+* |----------|---------|
+*         RenderGrid
+*            |
+*         RenderBook
+*            |
+*         SetBookShelf
+*/
+
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import RenderShelves from './RenderShelves'
 
 /**
- * SUMMARY: Renders index page in JSX code, including page title and three shelves with books, as well as link to search page.
- * PARENT: App.js
- * CHILD: RenderShelves.js
- * MORE INFO: App.js
- *
- * Pass-through props:
- * - books {array of "book" objects}
- * - updateBooks {onChange function}
- */
+* @props:
+*   - books {array of "book" objects} - Pass-through only
+*   - onChangeShelf {onChange function} - Pass-through only
+* @description
+* Renders index page in JSX code, including page title and
+* three shelves holding books, as well as link to search page.
+* More app information provided in App.js.
+*/
 
 function ListMyBooks(props) {
+  const propTypes = {   
+    books: PropTypes.arrayOf(PropTypes.object).isRequired,
+    onChangeShelf: PropTypes.func.isRequired
+  };
+
 	return (
 		<div className="list-books">
 			<div className="list-books-title">

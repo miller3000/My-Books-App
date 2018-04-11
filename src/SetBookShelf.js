@@ -1,18 +1,58 @@
+/**
+* My Books
+* 
+* @react-DOM
+* SETBOOKSHELF.JS
+* PARENT: RenderBook.js
+* CHILDREN: None
+* REACT COMPONENT TREE:
+*
+*           Index
+*            |
+*           App
+* |----------|---------|
+* ListMyBooks          SearchAllBooks
+* RenderShelves        |
+* |----------|---------|
+*         RenderGrid
+*            |
+*         RenderBook
+*            |
+*         SetBookShelf
+*/
+
 import React from 'react'
+import PropTypes from 'prop-types'
 
 /**
- * SUMMARY: Menu function that allows user to select a "shelf" value for any particular book object - MODIFIES STATE.
- * PARENT: RenderBook.js
- * CHILD: None
- * MORE INFO: App.js
- * 
- * PROPS PASSED IN FROM PARENTS:
- * - book object
- * - defaultShelf string
- * - updateBooks function
- */
+* @prop book
+*   {object with several properties}
+*   [props passed in from parents;
+*   describes a particular book]
+* @prop defaultShelf
+*   {string}
+*   [prop passed in from parents;
+*   determines what shelf is pre-selected upon rendering of menu,
+*   but shelf will change from within "books" state if a new shelf
+*   is selected in this function]
+* @prop onChangeShelf
+*   {event-handler function}
+*   [prop passed in from parents;
+*   Changes shelf of selected book;
+*   Updates "books" in local state and API.
+*   Triggered by drop-down event in "select"/"option" tags]
+* @description
+* Menu function that allows user to select a "shelf" value
+* for any particular book object. Passes new props back up to state.
+*/
 
 function SetBookShelf (props) {
+	const propTypes = {
+	  book: PropTypes.object.isRequired,
+	  defaultShelf: PropTypes.string.isRequired
+	  onChangeShelf: PropTypes.func.isRequired,
+	};
+
 	return (
       <div className="book-shelf-changer">
         <select

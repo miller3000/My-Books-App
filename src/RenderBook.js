@@ -1,28 +1,63 @@
+/**
+* My Books
+* 
+* @react-DOM
+* RENDERBOOK.JS
+* PARENT: RenderGrid.js
+* CHILDREN: SetBookShelf.js
+* REACT COMPONENT TREE:
+*
+*           Index
+*            |
+*           App
+* |----------|---------|
+* ListMyBooks          SearchAllBooks
+* RenderShelves        |
+* |----------|---------|
+*         RenderGrid
+*            |
+*         RenderBook
+*            |
+*         SetBookShelf
+*/
+
 import React from 'react'
+import PropTypes from 'prop-types'
 import SetBookShelf from './SetBookShelf'
 
-
 /**
- * SUMMARY: Renders an individual book's thumbnail image, title, and author(s) in JSX code.
- * PARENT: RenderGrid.js
- * CHILD: SetBookShelf.js
- * MORE INFO: App.js
- *
- * @param {object} book [props passed in from parents; describes a particular book; many properties, but pertinent as follows:
-//	let book = {
-//		title: 'string',
-//		authors: ['string', 'string'],
-//		shelf: 'string',
-//		imageLink: imageLinks[thumbnail] 'string'
-//		};
- * @param {string} defaultShelf [prop passed in from parents; if book passed in from parents does not have a "shelf" value, then a "default" value is passed into SetBookShelf]
- *
- * Passed-through props:
- * - updateBooks {onChange function}
- */
-
+* @prop book
+*   {object}
+*   [props passed in from parents;
+*   describes a particular book;
+*   many properties, but pertinent as follows]:
+*    	let book = {
+*     	 title: 'string',
+*	       authors: ['string', 'string'],
+*        shelf: 'string',
+*		     imageLink: imageLinks[thumbnail] 'string'
+*	  };
+*	   
+* @prop defaultShelf
+*   {string}
+*   [prop passed in from parents;
+*   if book passed in from parents does not have a "shelf" value,
+*   then a "default" value is passed into SetBookShelf]
+*
+* @props:
+* 	- onChangeShelf {onChange function} - Pass-through only
+* 
+* @description
+* Renders an individual book's thumbnail image, title, and author(s) in JSX code.
+*/
 
 function RenderBook(props) {
+	const propTypes = {
+	  book: PropTypes.object.isRequired,
+	  defaultShelf: PropTypes.string.isRequired
+	  onChangeShelf: PropTypes.func.isRequired,
+	};
+
 	const book = props.book;
 	const author = (book.authors) ? book.authors.join(', ') : '';
 	const imageLink = (book.imageLinks) ? book.imageLinks.thumbnail : '';
