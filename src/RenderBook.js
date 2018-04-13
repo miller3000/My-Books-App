@@ -26,6 +26,7 @@ import PropTypes from 'prop-types'
 import SetBookShelf from './SetBookShelf'
 
 /**
+* Renders an individual book's thumbnail image, title, and author(s) in JSX code.
 * @prop book
 *   {object}
 *   [props passed in from parents;
@@ -46,9 +47,6 @@ import SetBookShelf from './SetBookShelf'
 *
 * @props:
 * 	- onChangeShelf {onChange function} - Pass-through only
-* 
-* @description
-* Renders an individual book's thumbnail image, title, and author(s) in JSX code.
 */
 
 function RenderBook(props) {

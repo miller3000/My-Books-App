@@ -27,6 +27,8 @@ import PropTypes from 'prop-types'
 import RenderGrid from './RenderGrid'
 
 /**
+ * Renders search page in JSX code, including search bar and (if
+ * needed) a grid of search results (book objects).
  * @prop onEnterQuery
  *   {onChange function}
  *   Takes a string input ("query") from user and returns JSX code
@@ -38,10 +40,7 @@ import RenderGrid from './RenderGrid'
  * 		- books {array of "book" objects} - Pass-through only
  *   	- searchResults {array of "book" objects} - Pass-through only
  *    - onChangeShelf {onChange function} - Pass through only
- * @description
- * Renders search page in JSX code, including search bar and
- * (if needed) a grid of search results (book objects).
- */
+  */
 
 function SearchAllBooks (props) {
 	return (

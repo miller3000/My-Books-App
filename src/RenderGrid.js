@@ -27,13 +27,16 @@ import RenderBook from './RenderBook'
 import * as FilterBooks from './FilterBooks';
 
 /**
+* Maps all book objects to an individual category (either query or
+* shelf), depending on the FilterBooks function. Renders a grid of
+* filtered books in JSX code.
 * @prop book
 *   {object with "title", "authors", "shelf", and other properties}
 *   Represents one book and its properties
 * @prop books
 *   {array of "book" objects}
 *   [props passed in from parents]
-* @const booksOnShelf
+* @local booksOnShelf
 *   {array of "book" objects}
 *   Passed in arrays filtered through FilterBooks function,
 *   to select either books on a particular shelf
@@ -49,11 +52,6 @@ import * as FilterBooks from './FilterBooks';
 *   [prop to be modified within book objects -- passed in from parents]
 * @props:
 *   - onChangeShelf {onChange function} - Pass-through only
-* 
-* @description
-* Maps all book objects to an individual category (either query or
-* shelf), depending on the FilterBooks function. Renders a grid of
-* filtered books in JSX code.
 */
 
 function RenderGrid(props) {

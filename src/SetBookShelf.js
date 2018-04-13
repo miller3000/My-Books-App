@@ -25,6 +25,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 /**
+* Menu function that allows user to select a "shelf" value for any
+* particular book object. Passes new props back up to state.
 * @prop book
 *   {object with several properties}
 *   [props passed in from parents;
@@ -41,9 +43,6 @@ import PropTypes from 'prop-types'
 *   Changes shelf of selected book;
 *   Updates "books" in local state and API.
 *   Triggered by drop-down event in "select"/"option" tags]
-* @description
-* Menu function that allows user to select a "shelf" value
-* for any particular book object. Passes new props back up to state.
 */
 
 function SetBookShelf (props) {

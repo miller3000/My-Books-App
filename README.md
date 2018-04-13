@@ -1,6 +1,6 @@
 # My Books
 
-My Books is a web app that allows a user to search for books and add them to (or remove from) a personal library. The library has three categories, or "shelves": Currently Reading, Want to Read, and Already Read. The app displayes the cover, title, and author(s) of each book.
+My Books is a web app that allows a user to search for books and add them to (or remove from) a personal library. The library has three categories, or "shelves": Currently Reading, Want to Read, and Already Read. The app displayes the cover, title, and author(s) of each book. Either the shelves ('/') page or search page ('/search') is rendered at any given time.
 
 This project was bootstrapped with the [Create React App](https://github.com/facebookincubator/create-react-app), and is based on the starter code for "MyReads" by Udacity.
 
@@ -8,10 +8,11 @@ _Version and documentation authored April 2018_
 
 ## Contents
 
-- [App.js](/src/App.js): Contains application state and JSX code for rendering application
-- [Index.js](/src/index.js): Calls React to render App components within HTML
+- [App.js](/src/App.js): Contains application state and JSX code for rendering application.
+- [Index.js](/src/index.js): Calls the React DOM to render App components within HTML.
+- [BooksAPI.js](/src/BooksAPI.js): Accesses Udacity server to get and update books that can be put in the user library.
 
-A React component tree can be found within [App.js](/src/App.js) and in each of the other src files, along with documentation for the various components of the site.
+A React component tree that lists these and other files can be found within [App.js](/src/App.js) and in each of the other src files, along with documentation for the various components of the site.
 
 ## Installation
 
@@ -26,7 +27,6 @@ To install dependencies, from within the project directory:
 To begin the React server and run the application:
 
 `$ npm start`
-
 
 ## Limitations For Users
 

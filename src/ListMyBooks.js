@@ -27,13 +27,12 @@ import PropTypes from 'prop-types'
 import RenderShelves from './RenderShelves'
 
 /**
+* Renders index page in JSX code, including page title and
+* three shelves holding books, as well as link to search page.
 * @props:
 *   - books {array of "book" objects} - Pass-through only
 *   - onChangeShelf {onChange function} - Pass-through only
-* @description
-* Renders index page in JSX code, including page title and
-* three shelves holding books, as well as link to search page.
-* More app information provided in App.js.
+* @return JSX only
 */
 
 function ListMyBooks(props) {

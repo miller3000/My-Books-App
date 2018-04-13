@@ -26,6 +26,8 @@ import PropTypes from 'prop-types'
 import RenderGrid from './RenderGrid'
 
 /**
+* Renders shelves within index (JSX) page. Maps each of three shelves
+* to a separate grid of books.
 * @local allShelves
 *   {map function}
 *   Maps "shelves" array to JSX code
@@ -38,10 +40,6 @@ import RenderGrid from './RenderGrid'
 * @props:
 *   - books {array of "book" objects} - Pass-through only
 *   - onChangeShelf {onChange function} - Pass-through only
-* @description
-* Renders shelves within index (JSX) page.
-* Maps each of three shelves to a separate grid of books.
-* More app information provided in App.js.
 */
 
 function RenderShelves(props) {

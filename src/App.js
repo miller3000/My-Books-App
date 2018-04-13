@@ -21,35 +21,26 @@
 *         SetBookShelf
 */
 
-/**
-* @description
-* App allows user to search books (objects) from an outside server and
-* add them to (or remove from) a personal library of three displayed
-* "shelves": Currently Reading, Want to Read, and Already Read.
-* App displays cover, title, and author of each book on shelf
-* or in search.
-* User adds books to shelves via drop-down input on each book cover.
-*/
-
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import './App.css'
 
 /**
-* {component: "/"}
+* @component: "/"
 * Renders index page. Lists page title and three shelves with headings.
 */
 import ListMyBooks from './ListMyBooks'
 
 /**
-* {component: "/search"}
+* @component: "/search"
 * Renders search bar and grid of any books that match search query.
 */
 import SearchAllBooks from './SearchAllBooks'
 
 /**
-* {module: fetch API}
+* @module: fetch API
+* @async
 * Provided by Udacity to get, update, and search books on server.
 * Includes:
 *  - get (not used in app)
@@ -60,7 +51,7 @@ import SearchAllBooks from './SearchAllBooks'
 import * as BooksAPI from './BooksAPI'
 
 /**
-* {module: logic}
+* @module: logic
 * Returns subset of books to render or modify, according to
 * "shelf" or "query" criteria. 
 * Includes:
@@ -70,7 +61,7 @@ import * as BooksAPI from './BooksAPI'
 import * as FilterBooks from './FilterBooks'
 
 /**
-* {module: logic}
+* @module: logic
 * Returns updated arrays for "books" or "searchResults" based on
 * user action.
 * Includes:
@@ -79,7 +70,7 @@ import * as FilterBooks from './FilterBooks'
 */
 import * as ManageBooks from './ManageBooks'
 
-//STATE - PROPTYPES
+//VARIABLES - STATE
 /**
 * @state books
 *   {state variable - array of book objects} 
@@ -94,6 +85,7 @@ import * as ManageBooks from './ManageBooks'
 *    book
 *    
 * @method onChangeShelf
+* @async
 *   {user-event handler function - state management} 
 *   Listens for user selection of new shelf value for a book object.
 *   Depending on filter, rerenders index (shelves) or search (results)
@@ -109,6 +101,7 @@ import * as ManageBooks from './ManageBooks'
 *                                  server with new shelf value
 *   
 * @method onEnterQuery
+* @async
 *   {user-event handler function - state management} 
 *   Listens for user entry of text into search bar, sets as query for
 *   search of all books.
@@ -121,6 +114,8 @@ import * as ManageBooks from './ManageBooks'
 *   Triggered by search bar event in SearchAllBooks component.
 *   @param  {event}           searchEvent onChange event
 *                                         (user enters text)
+*   @throws {error}                       if no books returned from
+*                                         server, sets results=[]
 *   @return {array of objects}            any book objects on server
 *                                         that match query term
 *   
@@ -129,10 +124,11 @@ import * as ManageBooks from './ManageBooks'
 *   Contains all books (up to 20) last retrieved from API,
 *   which match current query entered into search bar.
 *   Similar to "books" object above.
-*
-//PARAMETERS - LOCAL
+*/
+//VARIABLES - LOCAL
 /**
 * @function clearResults
+* @async
 *   {navigation-event function - state management}
 *   Sets "searchResults" state to empty array and sets "books" state
 *   by refreshing library from server.
@@ -140,49 +136,44 @@ import * as ManageBooks from './ManageBooks'
 *   @return {array of objects} books currently in user library
 *   
 * @function getBooks
+* @async
 *   {navigation-event function - state management}
 *   Retrieves My Books library from server.
 *   Sets local state for "books".
 *   Triggered upon ComponentDidMount and (if '/') ComponentDidUpdate.
 *   @return {array of objects} books currently in user library
 *   
-* @const filter
+* @local filter
 *   {string - internal variable - either 'query' or 'shelf'}
 *   Sets whether "books" or "searchResults" are rendered.
 *   
-* @prop query
+* @local query
 *   {string - user input}
 *   Is text entered by user that filters books that are fetched
 *   from API and displayed on "/search".
 *   
-* @prop selectedShelf
+* @local selectedShelf
 *   {string - user input}
 *   Is value set by user upon selecting option in drop-down menu.
 *   Used to reassign value of "shelf" property of a book object.
 *   
-* @const theseBooks
+* @local theseBooks
 *   {array of book objects - internal variable}
 *   Represents either "books" or "searchResults" as input within
 *   app logic.
 *   
-* @const updatedBooks
+* @local updatedBooks
 *   {array of book objects - internal variable}
 *   Is copy of "books" array with updated shelf values, to be output
 *   into setState.
 */
 
-// The "App" Component Class holds and manages all state for the App.
-
-
-
+/**
+ * This component stores all state for the My Books app, stores all
+ * setState functions, and renders either the shelves (index) page (aka
+ * <ListMyBooks>) or search page (aka <SearchAllBooks>) at any time.
+ */
 class App extends Component {
-  propTypes = {   
-    books: PropTypes.arrayOf(PropTypes.object).isRequired,
-    onChangeShelf: PropTypes.func.isRequired,
-    onEnterQuery: PropTypes.func.isRequired,
-    searchResults: PropTypes.arrayOf(PropTypes.object).isRequired,
-  };
-
   state = {
       books: [ {} ],
       searchResults: []
@@ -252,5 +243,12 @@ class App extends Component {
     )
   }
 }
+
+App.propTypes = {   
+  books: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onChangeShelf: PropTypes.func.isRequired,
+  onEnterQuery: PropTypes.func.isRequired,
+  searchResults: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default App
