@@ -57,11 +57,6 @@ import * as FilterBooks from './FilterBooks';
 */
 
 function RenderGrid(props) {
-	const propTypes = { 
-	  book: PropTypes.object.isRequired,
-	  books: PropTypes.arrayOf(PropTypes.object).isRequired,
-	  onChangeShelf: PropTypes.func.isRequired,
-	};
 
 	let books = props.books;
 	let searchResults = props.searchResults;
@@ -83,6 +78,12 @@ function RenderGrid(props) {
 
 	return <ol className="books-grid">{mapBooks}</ol>
 }
+
+RenderGrid.propTypes = { 
+  book: PropTypes.object.isRequired,
+  books: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onChangeShelf: PropTypes.func.isRequired,
+};
 
 export default RenderGrid
 

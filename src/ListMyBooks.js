@@ -37,11 +37,6 @@ import RenderShelves from './RenderShelves'
 */
 
 function ListMyBooks(props) {
-  const propTypes = {   
-    books: PropTypes.arrayOf(PropTypes.object).isRequired,
-    onChangeShelf: PropTypes.func.isRequired
-  };
-
 	return (
 		<div className="list-books">
 			<div className="list-books-title">
@@ -59,5 +54,10 @@ function ListMyBooks(props) {
 		</div>
 	)
 }
+
+ListMyBooks.propTypes = {   
+  books: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onChangeShelf: PropTypes.func.isRequired
+};
 
 export default ListMyBooks

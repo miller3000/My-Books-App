@@ -44,14 +44,6 @@ import RenderGrid from './RenderGrid'
  */
 
 function SearchAllBooks (props) {
-  const propTypes = {   
-    books: PropTypes.arrayOf(PropTypes.object).isRequired,
-    onChangeShelf: PropTypes.func.isRequired,
-    onEnterQuery: PropTypes.func.isRequired,
-    query: PropTypes.string.isRequired,
-    searchResults: PropTypes.arrayOf(PropTypes.object).isRequired
-  };
-
 	return (
 	  <div className="search-books">
 	    <div className="search-books-bar">
@@ -75,5 +67,13 @@ function SearchAllBooks (props) {
 	  </div>
 	)
 }
+
+SearchAllBooks.propTypes = {   
+  books: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onChangeShelf: PropTypes.func.isRequired,
+  onEnterQuery: PropTypes.func.isRequired,
+  query: PropTypes.string.isRequired,
+  searchResults: PropTypes.arrayOf(PropTypes.object).isRequired
+};
 
 export default SearchAllBooks

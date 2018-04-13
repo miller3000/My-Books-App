@@ -47,12 +47,6 @@ import PropTypes from 'prop-types'
 */
 
 function SetBookShelf (props) {
-	const propTypes = {
-	  book: PropTypes.object.isRequired,
-	  defaultShelf: PropTypes.string.isRequired
-	  onChangeShelf: PropTypes.func.isRequired,
-	};
-
 	return (
       <div className="book-shelf-changer">
         <select
@@ -68,5 +62,11 @@ function SetBookShelf (props) {
       </div>
 	)
 }
+
+SetBookShelf.propTypes = {
+  book: PropTypes.object.isRequired,
+  defaultShelf: PropTypes.string.isRequired,
+  onChangeShelf: PropTypes.func.isRequired,
+};
 
 export default SetBookShelf

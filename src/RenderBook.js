@@ -52,12 +52,6 @@ import SetBookShelf from './SetBookShelf'
 */
 
 function RenderBook(props) {
-	const propTypes = {
-	  book: PropTypes.object.isRequired,
-	  defaultShelf: PropTypes.string.isRequired
-	  onChangeShelf: PropTypes.func.isRequired,
-	};
-
 	const book = props.book;
 	const author = (book.authors) ? book.authors.join(', ') : '';
 	const imageLink = (book.imageLinks) ? book.imageLinks.thumbnail : '';
@@ -81,5 +75,11 @@ function RenderBook(props) {
 		  </div>	
 	)
 }
+
+RenderBook.propTypes = {
+  book: PropTypes.object.isRequired,
+  defaultShelf: PropTypes.string.isRequired,
+  onChangeShelf: PropTypes.func.isRequired,
+};
 
 export default RenderBook

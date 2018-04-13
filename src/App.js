@@ -176,7 +176,7 @@ import * as ManageBooks from './ManageBooks'
 
 
 class App extends Component {
-  const propTypes = {   
+  propTypes = {   
     books: PropTypes.arrayOf(PropTypes.object).isRequired,
     onChangeShelf: PropTypes.func.isRequired,
     onEnterQuery: PropTypes.func.isRequired,

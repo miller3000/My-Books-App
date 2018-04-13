@@ -45,12 +45,6 @@ import RenderGrid from './RenderGrid'
 */
 
 function RenderShelves(props) {
-  const propTypes = { 
-	  books: PropTypes.arrayOf(PropTypes.object).isRequired,
-	  onChangeShelf: PropTypes.func.isRequired,
-	  shelf: PropTypes.object.isRequired,
-	  shelves: PropTypes.arrayOf(PropTypes.object).isRequired   
-	};
 
 	let allShelves, shelves;
 
@@ -76,6 +70,13 @@ function RenderShelves(props) {
 
 	return <div>{allShelves}</div>
 }
+
+RenderShelves.propTypes = { 
+  books: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onChangeShelf: PropTypes.func.isRequired,
+  shelf: PropTypes.object.isRequired,
+  shelves: PropTypes.arrayOf(PropTypes.object).isRequired   
+};
 
 export default RenderShelves
 

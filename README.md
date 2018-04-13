@@ -1,92 +1,83 @@
-# MyReads Project
+# My Books
 
-This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
+My Books is a web app that allows a user to search for books and add them to (or remove from) a personal library. The library has three categories, or "shelves": Currently Reading, Want to Read, and Already Read. The app displayes the cover, title, and author(s) of each book.
 
-Of course, you are free to start this project from scratch if you wish! Just be sure to use [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.
+This project was bootstrapped with the [Create React App](https://github.com/facebookincubator/create-react-app), and is based on the starter code for "MyReads" by Udacity.
 
-## TL;DR
+_Version and documentation authored April 2018_
 
-To get started developing right away:
+## Contents
 
-* install all project dependencies with `npm install`
-* start the development server with `npm start`
+- [App.js](/src/App.js): Contains application state and JSX code for rendering application
+- [Index.js](/src/index.js): Calls React to render App components within HTML
 
-## What You're Getting
-```bash
-├── CONTRIBUTING.md
-├── README.md - This file.
-├── SEARCH_TERMS.md # The whitelisted short collection of available search terms for you to use with your app.
-├── package.json # npm package manager file. It's unlikely that you'll need to modify this.
-├── public
-│   ├── favicon.ico # React Icon, You may change if you wish.
-│   └── index.html # DO NOT MODIFY
-└── src
-    ├── App.css # Styles for your app. Feel free to customize this as you desire.
-    ├── App.js # This is the root of your app. Contains static HTML right now.
-    ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
-    ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
-    ├── icons # Helpful images for your app. Use at your discretion.
-    │   ├── add.svg
-    │   ├── arrow-back.svg
-    │   └── arrow-drop-down.svg
-    ├── index.css # Global styles. You probably won't need to change anything here.
-    └── index.js # You should not need to modify this file. It is used for DOM rendering only.
-```
+A React component tree can be found within [App.js](/src/App.js) and in each of the other src files, along with documentation for the various components of the site.
 
-Remember that good React design practice is to create new JS files for each component and use import/require statements to include them where they are needed.
+## Installation
 
-## Backend Server
+To clone and run this application, you will need Git installed on your computer.
 
-To simplify your development process, we've provided a backend server for you to develop against. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods you will need to perform necessary operations on the backend:
+`$ git clone https://github.com/miller3000/reactnd-project-myreads-starter`
 
-* [`getAll`](#getall)
-* [`update`](#update)
-* [`search`](#search)
+To install dependencies, from within the project directory:
 
-### `getAll`
+`$ npm install`
 
-Method Signature:
+To begin the React server and run the application:
 
-```js
-getAll()
-```
+`$ npm start`
 
-* Returns a Promise which resolves to a JSON object containing a collection of book objects.
-* This collection represents the books currently in the bookshelves in your app.
 
-### `update`
+## Limitations For Users
 
-Method Signature:
+Udacity provided a backend server for development, accessible through
+the [Books API](/src/BooksAPI.js). The backend API uses a fixed set of cached search results and is limited to a particular set of search terms, a list of which can be found in [SEARCH_TERMS.md](SEARCH_TERMS.md). Those terms are the _only_ terms that will work with the backend.
 
-```js
-update(book, shelf)
-```
+## Improvements / Issues
 
-* book: `<Object>` containing at minimum an `id` attribute
-* shelf: `<String>` contains one of ["wantToRead", "currentlyReading", "read"]  
-* Returns a Promise which resolves to a JSON object containing the response data of the POST request
+At this time, My Books is still in a React development build. To improve performance, a production build will be released in the future.
 
-### `search`
+There can be a slight lag in performance between adding a book to the library from the search page, and rerendering on the main shelves page. I will investigate further and improve this issue.
 
-Method Signature:
+Please submit any other bugs and feature requests to [@miller3000](https://github.com/miller3000/).
 
-```js
-search(query)
-```
+## To-do
 
-* query: `<String>`
-* Returns a Promise which resolves to a JSON object containing a collection of a maximum of 20 book objects.
-* These books do not know which shelf they are on. They are raw results only. You'll need to make sure that books have the correct state while on the search page.
+_Primary:_
 
-## Important
-The backend API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in [SEARCH_TERMS.md](SEARCH_TERMS.md). That list of terms are the _only_ terms that will work with the backend, so don't be surprised if your searches for Basket Weaving or Bubble Wrap don't come back with any results.
+- [ ] Improve search bar use by adding a clear text (X) button
+- [ ] Improve search bar use by auto-placing cursor in search bar upon search page load
+- [ ] Sort books not only by shelves/categories, but also alphabetically by title, alphabetically by author, or by date added to library
+- [ ] Add a feature to check user removal of a book from library (e.g., "Are you sure...?")
 
-## Create React App
+_Secondary:_
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). You can find more information on how to perform common tasks [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
+- [ ] Allow user to see history of previous searches
+- [ ] Improve page styling, including highlight or animation of book covers upon rollover and upon shelf change
+- [ ] Improve page styling, including visual placeholder for an empty search or empty shelf
+- [ ] Search books just within user library
+- [ ] Move books between shelves in bulk
+- [ ] Book ratings function
+- [ ] Design and insert copyright/publisher attribution for books and book covers, without adding clutter to design
+- [ ] Use different server than Udacity's -- increase number of books available, increase number of functioning search terms
 
-## Contributing
+## Credits
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+This code was originally forked from starter code provided by Udacity at [https://github.com/udacity/reactnd-project-myreads-starter](https://github.com/udacity/reactnd-project-myreads-starter).
 
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+## License
+
+Copyright 2018 Andrew Miller
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
