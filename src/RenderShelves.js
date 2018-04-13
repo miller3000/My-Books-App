@@ -59,10 +59,10 @@ function RenderShelves(props) {
 }
 
 RenderShelves.propTypes = { 
-  books: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onChangeShelf: PropTypes.func.isRequired,
-  shelf: PropTypes.object.isRequired,
-  shelves: PropTypes.arrayOf(PropTypes.object).isRequired   
+  books: PropTypes.arrayOf(PropTypes.object),
+  onChangeShelf: PropTypes.func,
+  shelf: PropTypes.object,
+  shelves: PropTypes.arrayOf(PropTypes.object)  
 };
 
 export default RenderShelves

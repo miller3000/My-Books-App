@@ -66,9 +66,9 @@ function RenderGrid(props) {
 }
 
 RenderGrid.propTypes = { 
-  book: PropTypes.object.isRequired,
-  books: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onChangeShelf: PropTypes.func.isRequired,
+  book: PropTypes.object,
+  books: PropTypes.arrayOf(PropTypes.object),
+  onChangeShelf: PropTypes.func
 };
 
 export default RenderGrid

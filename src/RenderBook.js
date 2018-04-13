@@ -67,9 +67,9 @@ function RenderBook(props) {
 }
 
 RenderBook.propTypes = {
-  book: PropTypes.object.isRequired,
-  defaultShelf: PropTypes.string.isRequired,
-  onChangeShelf: PropTypes.func.isRequired,
+  book: PropTypes.object,
+  defaultShelf: PropTypes.string,
+  onChangeShelf: PropTypes.func
 };
 
 export default RenderBook

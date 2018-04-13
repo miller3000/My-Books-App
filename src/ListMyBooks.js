@@ -52,8 +52,8 @@ function ListMyBooks(props) {
 }
 
 ListMyBooks.propTypes = {   
-  books: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onChangeShelf: PropTypes.func.isRequired
+  books: PropTypes.arrayOf(PropTypes.object),
+  onChangeShelf: PropTypes.func
 };
 
 export default ListMyBooks

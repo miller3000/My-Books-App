@@ -64,11 +64,11 @@ function SearchAllBooks (props) {
 }
 
 SearchAllBooks.propTypes = {   
-  books: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onChangeShelf: PropTypes.func.isRequired,
-  onEnterQuery: PropTypes.func.isRequired,
-  query: PropTypes.string.isRequired,
-  searchResults: PropTypes.arrayOf(PropTypes.object).isRequired
+  books: PropTypes.arrayOf(PropTypes.object),
+  onChangeShelf: PropTypes.func,
+  onEnterQuery: PropTypes.func,
+  query: PropTypes.string,
+  searchResults: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default SearchAllBooks

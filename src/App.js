@@ -200,10 +200,10 @@ class App extends Component {
 }
 
 App.propTypes = {   
-  books: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onChangeShelf: PropTypes.func.isRequired,
-  onEnterQuery: PropTypes.func.isRequired,
-  searchResults: PropTypes.arrayOf(PropTypes.object).isRequired,
+  books: PropTypes.arrayOf(PropTypes.object),
+  onChangeShelf: PropTypes.func,
+  onEnterQuery: PropTypes.func,
+  searchResults: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default App
