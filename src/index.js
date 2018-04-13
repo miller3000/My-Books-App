@@ -1,7 +1,5 @@
 /**
-* My Books
-* 
-* @react-DOM
+* My Books React-DOM
 * INDEX.JS
 * PARENT: none
 * CHILDREN: App.js

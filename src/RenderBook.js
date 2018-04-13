@@ -1,7 +1,5 @@
 /**
-* My Books
-* 
-* @react-DOM
+* My Books React-DOM
 * RENDERBOOK.JS
 * PARENT: RenderGrid.js
 * CHILDREN: SetBookShelf.js
@@ -26,27 +24,21 @@ import PropTypes from 'prop-types'
 import SetBookShelf from './SetBookShelf'
 
 /**
-* Renders an individual book's thumbnail image, title, and author(s) in JSX code.
-* @prop book
-*   {object}
-*   [props passed in from parents;
-*   describes a particular book;
-*   many properties, but pertinent as follows]:
-*    	let book = {
-*     	 title: 'string',
-*	       authors: ['string', 'string'],
-*        shelf: 'string',
-*		     imageLink: imageLinks[thumbnail] 'string'
+* Renders an individual book's thumbnail image, title, and author(s)
+* in JSX code.
+* @prop {object} 	book 		Passed in from parents - describes book
+*	  Many properties, but pertinent ones as follows:
+*   let book = {
+*     title: 'string',
+*	    authors: ['string', 'string'],
+*     shelf: 'string',
+*		  imageLink: imageLinks[thumbnail] 'string'
 *	  };
-*	   
-* @prop defaultShelf
-*   {string}
-*   [prop passed in from parents;
+* @prop {string}  defaultShelf 		Passed in from parents
 *   if book passed in from parents does not have a "shelf" value,
-*   then a "default" value is passed into SetBookShelf]
-*
-* @props:
-* 	- onChangeShelf {onChange function} - Pass-through only
+*   then a "default" value is passed into SetBookShelf
+* @prop {onChange function} onChangeShelf - Pass-through only
+* @return JSX only
 */
 
 function RenderBook(props) {

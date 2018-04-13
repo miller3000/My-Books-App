@@ -1,7 +1,5 @@
 /**
-* My Books
-* 
-* @react-DOM
+* My Books React-DOM
 * SEARCHALLBOOKS.JS
 * PARENT: App.js
 * CHILDREN: RenderGrid.js
@@ -29,17 +27,15 @@ import RenderGrid from './RenderGrid'
 /**
  * Renders search page in JSX code, including search bar and (if
  * needed) a grid of search results (book objects).
- * @prop onEnterQuery
- *   {onChange function}
+ * @prop {array of book objects} books          Pass-through only
+ * @prop {onChange function}     onChangeShelf  Pass-through only
+ * @prop {onChange function}     onEnterQuery
  *   Takes a string input ("query") from user and returns JSX code
  *   of book objects. Modifies state of "searchResults" array.
- * @prop query
- *   (string}
+ * @prop {string} query
  *   Text input from user, string used to filter books for render.
- * @props:
- * 		- books {array of "book" objects} - Pass-through only
- *   	- searchResults {array of "book" objects} - Pass-through only
- *    - onChangeShelf {onChange function} - Pass through only
+ * @prop {array of book objects} searchResults  Pass-through only
+ * @return JSX only
   */
 
 function SearchAllBooks (props) {

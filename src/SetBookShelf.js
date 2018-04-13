@@ -1,7 +1,5 @@
 /**
-* My Books
-* 
-* @react-DOM
+* My Books React-DOM
 * SETBOOKSHELF.JS
 * PARENT: RenderBook.js
 * CHILDREN: None
@@ -25,24 +23,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 /**
-* Menu function that allows user to select a "shelf" value for any
+* Drop-down menu that allows user to select a "shelf" value for any
 * particular book object. Passes new props back up to state.
-* @prop book
-*   {object with several properties}
-*   [props passed in from parents;
-*   describes a particular book]
-* @prop defaultShelf
-*   {string}
-*   [prop passed in from parents;
-*   determines what shelf is pre-selected upon rendering of menu,
-*   but shelf will change from within "books" state if a new shelf
-*   is selected in this function]
-* @prop onChangeShelf
-*   {event-handler function}
-*   [prop passed in from parents;
-*   Changes shelf of selected book;
-*   Updates "books" in local state and API.
-*   Triggered by drop-down event in "select"/"option" tags]
+* @prop {object} book                       Passed in from parents
+* @prop {string} defaultShelf               Passed in from parents
+*   Determines what shelf is checked when menu is rendered.
+*   Checked shelf will change from within "books" if user selects a
+*   new shelf.
+* @prop {onChange function} onChangeShelf   Passed in from parents
+*   Changes shelf of selected book and updates "books" in state.
+*   Triggered by drop-down event in "select"/"option" tags.
+* @return JSX only
 */
 
 function SetBookShelf (props) {

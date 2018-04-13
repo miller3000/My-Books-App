@@ -1,7 +1,5 @@
 /**
-* My Books
-* 
-* @react-DOM
+* My Books React-DOM
 * LISTMYBOOKS.JS
 * PARENT: App.js
 * CHILDREN: RenderShelves.js
@@ -29,9 +27,8 @@ import RenderShelves from './RenderShelves'
 /**
 * Renders index page in JSX code, including page title and
 * three shelves holding books, as well as link to search page.
-* @props:
-*   - books {array of "book" objects} - Pass-through only
-*   - onChangeShelf {onChange function} - Pass-through only
+* @prop {array of objects}	books 					Pass-through only
+* @prop {onChange function} onChangeShelf		Pass-through only
 * @return JSX only
 */
 
@@ -44,7 +41,7 @@ function ListMyBooks(props) {
 			<div className="list-books-content">
 			  <RenderShelves
 			  	books={props.books}
-				onChangeShelf={props.onChangeShelf}
+					onChangeShelf={props.onChangeShelf}
 			  />
 			</div>
 	        <div className="open-search">

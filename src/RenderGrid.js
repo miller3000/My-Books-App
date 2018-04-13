@@ -1,7 +1,5 @@
 /**
-* My Books
-* 
-* @react-DOM
+* My Books React-DOM
 * RENDERGRID.JS
 * PARENT: RenderShelves.js, SearchAllBooks.js
 * CHILDREN: RenderBook.js
@@ -30,38 +28,28 @@ import * as FilterBooks from './FilterBooks';
 * Maps all book objects to an individual category (either query or
 * shelf), depending on the FilterBooks function. Renders a grid of
 * filtered books in JSX code.
-* @prop book
-*   {object with "title", "authors", "shelf", and other properties}
-*   Represents one book and its properties
-* @prop books
-*   {array of "book" objects}
-*   [props passed in from parents]
-* @local booksOnShelf
-*   {array of "book" objects}
+* @prop {object} 									book 		Represents book w/ title,
+*       																	author, shelf, etc.
+* @prop {array of book objects}		books 	Passed in from parents
+* @const {array of book objects}  booksOnShelf
 *   Passed in arrays filtered through FilterBooks function,
 *   to select either books on a particular shelf
 *   or books that match a particular query.
-* @local mapBooks
-*   {map function}
-*   Maps booksOnShelf array to JSX code
-* @prop searchResults
-*   {array of "book" objects}
-*   [props passed in from parents]
-* @prop shelf
-*   {string}
-*   [prop to be modified within book objects -- passed in from parents]
-* @props:
-*   - onChangeShelf {onChange function} - Pass-through only
+* @function {map function} 				mapBooks 	Maps booksOnShelf array
+*      																			to JSX code
+* @prop {onChangefunction}				onChangeShelf   Pass-through only
+* @prop {array of book objects} 	searchResults	Passed in from parents
+* @prop {string} 									shelf 	Passed in from parents
+* @return JSX only
 */
 
 function RenderGrid(props) {
+	const books = props.books;
+	const searchResults = props.searchResults;
+	const shelf = props.shelf;
+	const booksOnShelf = FilterBooks.getResults(books, searchResults, shelf)
 
-	let books = props.books;
-	let searchResults = props.searchResults;
-	let shelf = props.shelf;
-	let booksOnShelf = FilterBooks.getResults(books, searchResults, shelf)
-
-	let mapBooks = booksOnShelf.map((book) => (
+	const mapBooks = booksOnShelf.map((book) => (
 		<li key={book.id} className="book-info">
 			<div className="book-on-shelf">
 			  <RenderBook
