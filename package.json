@@ -1,21 +1,27 @@
 {
+  "name": "myBooks",
+  "description": "React application",
+  "version": "1.6.0",
+  "engines": {
+    "node": "8.9.4",
+    "npm": "6.4.1",
+    "yarn": "1.6.0"
+  },
   "dependencies": {
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "history": "^4.7.2",
-    "prop-types": "^15.6.1",
+    "prop-types": "^15.6.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-router-dom": "^4.2.2"
-  },
-  "devDependencies": {
-    "react-scripts": "0.9.5"
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^0.9.5",
+    "webpack": "^4.20.2"
   },
   "homepage": "https://salty-taiga-44570.herokuapp.com/",
   "scripts": {
-    "dev": "react-scripts start",
-    "start": "serve -s build",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
     "heroku-postbuild": "npm run build"
   }
 }
