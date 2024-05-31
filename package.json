@@ -10,16 +10,16 @@
   "dependencies": {
     "history": "^4.7.2",
     "prop-types": "^15.6.2",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "^0.9.5"
+    "react-scripts": "^5.0.1"
   },
   "devDependencies": {
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "^5.6.0",
     "webpack": "^4.20.2",
-    "webpack-dev-server": "^3.1.9"
+    "webpack-dev-server": "^5.0.4"
   },
   "homepage": "https://salty-taiga-44570.herokuapp.com/",
   "scripts": {
@@ -28,5 +28,17 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "heroku-postbuild": "yarn run build"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
